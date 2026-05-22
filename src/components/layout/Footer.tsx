@@ -6,9 +6,9 @@ export default function Footer() {
 
   useEffect(() => {
     fetch('/api/views')
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error('fail'); return r.json(); })
       .then(d => setViews(d.views))
-      .catch(() => {});
+      .catch(e => console.log('浏览量加载失败:', e));
   }, []);
 
   return (
