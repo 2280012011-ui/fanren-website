@@ -27,3 +27,4 @@ dist-ssr
 pictures/
 .claude/
 videos/
+package-lock.json
