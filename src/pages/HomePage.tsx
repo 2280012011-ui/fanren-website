@@ -38,7 +38,7 @@ export default function HomePage() {
   const video = createPortal(
     <video
       className={styles.videoBg}
-      src="/videos/bg.mp4"
+      src="/videos/bg-compressed.mp4"
       autoPlay
       loop
       muted
