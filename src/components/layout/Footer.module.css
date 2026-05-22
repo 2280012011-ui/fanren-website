@@ -3,6 +3,8 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(4px);
 }
 
 .inner {
