@@ -1,0 +1,14 @@
+.page {
+  padding: 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.timelineWrapper {
+  position: relative;
+  margin: 0 auto;
+}
+
+.landscapeContainer {
+  position: relative;
+}

@@ -1,0 +1,14 @@
+.page {
+  padding: 2rem;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: var(--font-display);
+  color: var(--ink-faint);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}

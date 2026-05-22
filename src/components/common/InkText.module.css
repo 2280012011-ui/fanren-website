@@ -1,0 +1,8 @@
+.container {
+  overflow: hidden;
+}
+
+.text {
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+}

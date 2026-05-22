@@ -1,0 +1,77 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--rice-paper);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--parchment-dark) 0%, var(--parchment) 100%);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: grayscale(0.3) contrast(0.9);
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--parchment-dark) 0%, var(--parchment) 100%);
+}
+
+.initials {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--ink-faint);
+  opacity: 0.3;
+}
+
+.info {
+  padding: 1.25rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-heavy);
+  white-space: nowrap;
+}
+
+.aliases {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.affiliation {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
