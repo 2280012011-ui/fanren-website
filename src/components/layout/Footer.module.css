@@ -1,6 +1,8 @@
 .footer {
   padding: 4rem 2rem 2rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .inner {
@@ -10,7 +12,7 @@
 
 .divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--ink-faint), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
   margin-bottom: 2rem;
 }
 
@@ -24,18 +26,21 @@
 
 .text {
   font-family: var(--font-display);
-  font-size: 0.9rem;
-  color: var(--ink-light);
-  letter-spacing: 0.1em;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
 .separator {
   color: var(--vermillion);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
+  text-shadow: 0 0 6px rgba(192,59,59,0.3);
 }
 
 .copyright {
-  font-size: 0.75rem;
-  color: var(--ink-faint);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
   font-family: var(--font-body);
+  text-shadow: 0 0 4px rgba(0,0,0,0.5);
 }

@@ -1,14 +1,18 @@
 export type ArtifactType =
   | '飞剑'
+  | '攻击法宝'
   | '防御法器'
   | '储物法器'
-  | '攻击法宝'
   | '辅助法宝'
   | '灵兽/灵虫'
   | '丹药'
   | '阵法'
   | '功法秘术'
-  | '灵材';
+  | '灵材'
+  | '符箓'
+  | '傀儡'
+  | '火焰/神雷'
+  | '十大至宝';
 
 export type ArtifactGrade =
   | '凡器'
@@ -22,7 +26,7 @@ export type ArtifactGrade =
 export interface Artifact {
   id: string;
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
   type: ArtifactType;
   grade: ArtifactGrade;
   ownerId: string;

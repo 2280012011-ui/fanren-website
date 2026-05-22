@@ -1,6 +1,5 @@
 .section {
   padding: 4rem 2rem 6rem;
-  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
 }
 
 .inner {
@@ -47,7 +46,8 @@
   margin: 0 auto;
   text-align: left;
   padding: 2rem;
-  background: var(--rice-paper);
+  background: rgba(245, 240, 232, 0.88);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -85,7 +85,8 @@
 }
 
 .highlightInner {
-  background: var(--rice-paper);
+  background: rgba(245, 240, 232, 0.88);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 2rem 1.5rem;
   height: 100%;

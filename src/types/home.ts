@@ -14,4 +14,6 @@ export interface SiteStatistics {
   seasonCount: number;
   totalEpisodes: number;
   yearStart: number;
+  duration: string;
+  startDate: string;
 }

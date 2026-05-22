@@ -2,6 +2,9 @@
   padding: 4rem 2rem;
   max-width: var(--content-max);
   margin: 0 auto;
+  background: rgba(245, 240, 232, 0.7);
+  backdrop-filter: blur(3px);
+  border-radius: 4px;
 }
 
 .grid {
@@ -16,7 +19,8 @@
 }
 
 .card {
-  background: var(--rice-paper);
+  background: rgba(245, 240, 232, 0.88);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 2rem;
   height: 100%;

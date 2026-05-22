@@ -1,12 +1,14 @@
 export type CultivationRealm =
+  | '凡人'
   | '练气期'
   | '筑基期'
+  | '筑基级'
   | '结丹期'
+  | '结丹级'
   | '元婴期'
+  | '元婴级'
   | '化神期'
-  | '炼虚期'
-  | '合体期'
-  | '大乘期';
+  | '化神期以上';
 
 export interface CharacterRelation {
   targetId: string;
@@ -18,7 +20,7 @@ export interface Character {
   id: string;
   name: string;
   aliases: string[];
-  imageUrl: string;
+  imageUrl?: string;
   realm: CultivationRealm;
   affiliation: string;
   description: string;
@@ -28,4 +30,5 @@ export interface Character {
   firstAppearChapter: string;
   status: 'alive' | 'departed' | 'deceased';
   tags: string[];
+  ending: string;
 }

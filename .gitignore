@@ -26,3 +26,5 @@ dist-ssr
 # Project
 pictures/
 .claude/
+public/videos/
+videos/

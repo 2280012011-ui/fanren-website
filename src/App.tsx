@@ -5,6 +5,7 @@ import TimelinePage from './pages/TimelinePage';
 import ArtifactsPage from './pages/ArtifactsPage';
 import CharactersPage from './pages/CharactersPage';
 import CharacterDetailPage from './pages/CharacterDetailPage';
+import StarChartPage from './pages/StarChartPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/characters" element={<CharactersPage />} />
         <Route path="/characters/:id" element={<CharacterDetailPage />} />
       </Route>
+      <Route path="/starchart" element={<StarChartPage />} />
     </Routes>
   );
 }

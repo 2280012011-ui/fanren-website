@@ -49,7 +49,7 @@ export default function StatisticsPanel() {
         <StatCard label="B站评分" value={stats.bilibiliRating * 10} formatter={(n) => (n / 10).toFixed(1)} suffix="/ 10.0" delay={0.3} />
         <StatCard label="豆瓣评分" value={stats.doubanRating * 10} formatter={(n) => (n / 10).toFixed(1)} suffix="/ 10.0" delay={0.45} />
         <StatCard label="已播出集数" value={stats.totalEpisodes} formatter={(n) => `${n}`} suffix="集" delay={0.6} />
-        <StatCard label="开播至今" value={2026 - stats.yearStart} formatter={(n) => `第${n}`} suffix="年" delay={0.75} />
+        <StatCard label={`开播至今 · ${stats.startDate}`} value={0} formatter={() => stats.duration} suffix="" delay={0.75} />
       </div>
     </section>
   );

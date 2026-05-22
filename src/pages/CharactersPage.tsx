@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import SectionTitle from '../components/common/SectionTitle';
 import CharacterFilter from '../components/characters/CharacterFilter';
 import CharacterGrid from '../components/characters/CharacterGrid';
@@ -7,29 +8,23 @@ import { characters } from '../data/characters';
 import styles from './CharactersPage.module.css';
 
 export default function CharactersPage() {
-  const [realm, setRealm] = useState('全部');
   const [tag, setTag] = useState('全部');
 
   const filtered = useMemo(() => {
-    return characters.filter((c) => {
-      if (realm !== '全部' && c.realm !== realm) return false;
-      if (tag !== '全部' && !c.tags.includes(tag)) return false;
-      return true;
-    });
-  }, [realm, tag]);
+    if (tag === '全部') return characters;
+    return characters.filter((c) => c.tags.includes(tag));
+  }, [tag]);
 
   return (
     <div className={styles.page}>
       <ScrollReveal>
-        <SectionTitle title="人物志" subtitle="人界篇主要人物" />
+        <SectionTitle title="人物志" subtitle="人界篇主要人物 · 按势力浏览" />
+        <div className={styles.starLink}>
+          <Link to="/starchart">✦ 进入人物星云图 · 3D交互探索 ✦</Link>
+        </div>
       </ScrollReveal>
       <ScrollReveal>
-        <CharacterFilter
-          selectedRealm={realm}
-          selectedTag={tag}
-          onRealmChange={setRealm}
-          onTagChange={setTag}
-        />
+        <CharacterFilter selected={tag} onChange={setTag} />
       </ScrollReveal>
       <ScrollReveal>
         <CharacterGrid characters={filtered} />

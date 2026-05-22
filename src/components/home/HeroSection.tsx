@@ -1,32 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
 import LoadingScreen from '../common/LoadingScreen';
 
 export default function HeroSection() {
   const [loading, setLoading] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <section className={styles.hero}>
-        <div
-          className={styles.parallaxBg}
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-        />
-        <div className={styles.mountainSilhouette} />
-        <div className={styles.clouds}>
-          <div className={styles.cloud1} style={{ transform: `translateX(${scrollY * 0.1}px)` }} />
-          <div className={styles.cloud2} style={{ transform: `translateX(${-scrollY * 0.15}px)` }} />
-        </div>
-
         <div className={styles.content}>
           <motion.div
             className={styles.titleGroup}
