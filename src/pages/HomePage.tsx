@@ -6,6 +6,7 @@ import RebroadcastBanner from '../components/home/RebroadcastBanner';
 import HonorsPanel from '../components/home/HonorsPanel';
 import StatisticsPanel from '../components/home/StatisticsPanel';
 import PromotionalSection from '../components/home/PromotionalSection';
+import CommentWall from '../components/home/CommentWall';
 import InkBrush from '../components/common/InkBrush';
 import styles from './HomePage.module.css';
 
@@ -59,6 +60,7 @@ export default function HomePage() {
         <StatisticsPanel />
         <InkBrush />
         <PromotionalSection />
+        <CommentWall />
       </div>
 
       {/* About button */}
