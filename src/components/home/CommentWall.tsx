@@ -2,12 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import styles from './CommentWall.module.css';
 
 interface Comment {
-  id: string; text: string; time: number; likes: number;
+  id: string; name: string; text: string; time: number; likes: number;
 }
 
 export default function CommentWall() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [total, setTotal] = useState(0);
+  const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [sort, setSort] = useState<'time'|'likes'>('time');
   const [loading, setLoading] = useState(false);
@@ -35,26 +36,43 @@ export default function CommentWall() {
     const t = text.trim().slice(0, 100);
     if (!t || loading) return;
     setLoading(true);
-    await fetch('/api/comments', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text:t}) });
-    setText(''); setLoading(false); fetchComments();
+    const res = await fetch('/api/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: t, name: name.trim() }),
+    });
+    const data = await res.json();
+    if (data.ok) {
+      setText('');
+      setName('');
+    }
+    setLoading(false);
+    fetchComments();
   };
 
   const like = async (id: string) => {
     if (liked.has(id)) return;
-    await fetch(`/api/comments?id=${id}`, { method:'PATCH' });
+    await fetch(`/api/comments?id=${id}`, { method: 'PATCH' });
     updateLiked(new Set([...liked, id]));
     fetchComments();
   };
 
   const del = async (id: string) => {
     if (!adminPw) return;
-    await fetch(`/api/comments?id=${id}&pw=${encodeURIComponent(adminPw)}`, { method:'DELETE' });
+    await fetch(`/api/comments?id=${id}&pw=${encodeURIComponent(adminPw)}`, { method: 'DELETE' });
     fetchComments();
   };
 
+  // Beijing time formatter (UTC+8)
   const fmt = (ts: number) => {
     const d = new Date(ts);
-    return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+    const bj = new Date(d.getTime() + d.getTimezoneOffset() * 60000 + 8 * 3600000);
+    const y = bj.getFullYear();
+    const m = bj.getMonth() + 1;
+    const day = bj.getDate();
+    const h = String(bj.getHours()).padStart(2, '0');
+    const min = String(bj.getMinutes()).padStart(2, '0');
+    return `${y}/${m}/${day} ${h}:${min}（北京）`;
   };
 
   return (
@@ -68,18 +86,43 @@ export default function CommentWall() {
         </div>
 
         <div className={styles.inputRow}>
-          <input className={styles.input} value={text} onChange={e=>setText(e.target.value)} maxLength={100} placeholder="留下你的修仙感悟…（最多100字）" onKeyDown={e=>e.key==='Enter'&&submit()} />
-          <span className={styles.charCount}>{text.length}/100</span>
-          <button className={styles.sendBtn} onClick={submit} disabled={loading}>{loading?'发送中…':'发送传音符'}</button>
+          <input
+            className={styles.nameInput}
+            value={name}
+            onChange={e => setName(e.target.value)}
+            maxLength={8}
+            placeholder="道号（可选，8字内）"
+          />
+          <div className={styles.textInputWrap}>
+            <input
+              className={styles.input}
+              value={text}
+              onChange={e => setText(e.target.value)}
+              maxLength={100}
+              placeholder="留下你的修仙感悟…（最多100字）"
+              onKeyDown={e => e.key === 'Enter' && submit()}
+            />
+            <span className={styles.charCount}>{text.length}/100</span>
+          </div>
+          <button className={styles.sendBtn} onClick={submit} disabled={loading}>
+            {loading ? '发送中…' : '发送传音符'}
+          </button>
         </div>
 
         <div className={styles.list}>
           {comments.map(c => (
             <div key={c.id} className={styles.item}>
+              <div className={styles.itemHeader}>
+                <span className={styles.name}>{c.name}</span>
+                <span className={styles.time}>{fmt(c.time)}</span>
+              </div>
               <p className={styles.text}>{c.text}</p>
               <div className={styles.meta}>
-                <span className={styles.time}>{fmt(c.time)}</span>
-                <button className={`${styles.likeBtn} ${liked.has(c.id)?styles.liked:''}`} onClick={()=>like(c.id)} disabled={liked.has(c.id)}>
+                <button
+                  className={`${styles.likeBtn} ${liked.has(c.id)?styles.liked:''}`}
+                  onClick={()=>like(c.id)}
+                  disabled={liked.has(c.id)}
+                >
                   ✦ {c.likes}
                 </button>
                 {showAdmin && <button className={styles.delBtn} onClick={()=>del(c.id)} title="删除">✕</button>}
