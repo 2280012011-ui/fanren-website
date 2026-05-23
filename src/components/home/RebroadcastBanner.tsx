@@ -58,7 +58,7 @@ export default function RebroadcastBanner() {
 
           <a
             className={styles.bilibiliLink}
-            href="https://www.bilibili.com/bangumi/media/md28231867"
+            href="https://www.bilibili.com/bangumi/play/ep733316?spm_id_from=333.337.0.0&from_spmid=666.25.episode.0"
             target="_blank"
             rel="noopener noreferrer"
           >
