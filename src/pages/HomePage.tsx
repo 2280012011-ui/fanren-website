@@ -72,7 +72,7 @@ export default function HomePage() {
           <motion.div className={styles.aboutCard} initial={{opacity:0,scale:0.9,y:20}} animate={{opacity:1,scale:1,y:0}} exit={{opacity:0,scale:0.9,y:20}} onClick={e=>e.stopPropagation()}>
             <button className={styles.aboutClose} onClick={() => setShowAbout(false)}>×</button>
             <p className={styles.aboutText}>
-              作者说：本网站全程通过 vibe coding 开发，主要目的是宣传《凡人修仙传》，以及庆祝其即将复播。本人是网站开发小白，所以网站有些地方很粗糙，还有很多 bug，仅供娱乐。部分素材取自于社交媒体平台，感谢博主 @落雨无声。
+              作者说：本网站全程通过 vibe coding 开发，目的是宣传《凡人修仙传》，以及庆祝其即将复播。本人是网站开发小白，所以网站有些地方很粗糙，还有很多 bug，仅供娱乐。部分素材取自于社交媒体平台，感谢博主 @落雨无声、@天南第一深情。
             </p>
           </motion.div>
         </motion.div>,
