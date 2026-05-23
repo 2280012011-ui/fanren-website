@@ -26,5 +26,5 @@ dist-ssr
 # Project
 pictures/
 .claude/
-videos/
+/videos
 package-lock.json
