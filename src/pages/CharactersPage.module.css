@@ -8,6 +8,10 @@
   padding: 2rem;
   max-width: var(--content-max);
   margin: 0 auto;
+  background: rgba(245, 240, 232, 0.82);
+  backdrop-filter: blur(6px);
+  border-radius: 4px;
+  min-height: 100vh;
 }
 
 .starLink {
