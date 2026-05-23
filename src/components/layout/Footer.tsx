@@ -3,28 +3,45 @@ import styles from './Footer.module.css';
 
 export default function Footer() {
   const [views, setViews] = useState<number | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch('/api/views')
-      .then(r => r.json())
-      .then(d => { if (d.views) setViews(d.views); })
-      .catch(() => {});
+      .then(r => {
+        if (!r.ok) throw new Error('api error');
+        return r.json();
+      })
+      .then(d => {
+        if (typeof d.views === 'number') {
+          setViews(d.views);
+        } else {
+          throw new Error('no views field');
+        }
+      })
+      .catch(() => setError(true));
   }, []);
 
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
+        {/* 浏览量印章 — 独立一行，醒目 */}
+        <div className={styles.viewBadge}>
+          <div className={styles.viewBadgeInner}>
+            <span className={styles.viewLabel}>已有</span>
+            <span className={styles.viewNumber}>
+              {views !== null ? views.toLocaleString() : error ? '···' : '—'}
+            </span>
+            <span className={styles.viewLabel}>位道友云游至此</span>
+          </div>
+        </div>
+
         <div className={styles.divider} />
+
         <div className={styles.content}>
           <span className={styles.text}>凡人修仙传 · 人界篇</span>
           <span className={styles.separator}>◇</span>
           <span className={styles.text}>韩立修仙之路</span>
         </div>
-        {views !== null && (
-          <p className={styles.views}>
-            ✦ 已有 <strong>{views.toLocaleString()}</strong> 位道友到访 ✦
-          </p>
-        )}
         <p className={styles.copyright}>
           本网站为粉丝自制宣传站，内容来源网络，版权归原作者及平台所有
         </p>
