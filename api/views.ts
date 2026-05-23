@@ -6,15 +6,34 @@ export async function GET() {
     'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
   };
 
-  try {
-    const { Redis } = await import('@upstash/redis');
+  const redisUrl = (process.env.UPSTASH_REDIS_REST_URL || '').replace(/\/$/, '');
+  const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || '';
 
-    const redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL || '',
-      token: process.env.UPSTASH_REDIS_REST_TOKEN || '',
+  console.log('[views] URL configured:', !!redisUrl, 'Token configured:', !!redisToken);
+
+  if (!redisUrl || !redisToken) {
+    return new Response(
+      JSON.stringify({ views: 0, error: 'Redis 环境变量未配置' }),
+      { status: 200, headers },
+    );
+  }
+
+  try {
+    // 直接用 Upstash REST API，跳过 SDK
+    const res = await fetch(`${redisUrl}/incr/${KEY}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${redisToken}`,
+      },
     });
 
-    const count = await redis.incr(KEY);
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Upstash 返回 ${res.status}: ${text}`);
+    }
+
+    const data = await res.json();
+    const count = data.result;
 
     console.log(`[views] 浏览量 +1，当前: ${count}`);
 
@@ -24,16 +43,7 @@ export async function GET() {
     });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    console.error('[views] 计数失败:', msg);
-
-    // 判断是否是 Redis 未配置
-    if (msg.includes('url is empty') || msg.includes('invalid url')) {
-      return new Response(
-        JSON.stringify({ views: 0, error: 'Redis 未配置，请在 Vercel 设置环境变量' }),
-        { status: 200, headers },
-      );
-    }
-
+    console.error('[views] 请求失败:', msg);
     return new Response(
       JSON.stringify({ views: 0, error: msg }),
       { status: 200, headers },
