@@ -38,19 +38,23 @@ export default function RebroadcastBanner() {
           <p className={styles.subtitle}>年番复播 · 荣耀归来</p>
           <div className={styles.date}>2026 年 6 月 13 日</div>
 
-          <div className={styles.countdown}>
-            {[
-              { v: cd.days, l: '天' },
-              { v: cd.hours, l: '时' },
-              { v: cd.mins, l: '分' },
-              { v: cd.secs, l: '秒' },
-            ].map((item) => (
-              <div key={item.l} className={styles.cdItem}>
-                <span className={styles.cdNum}>{String(item.v).padStart(2, '0')}</span>
-                <span className={styles.cdLabel}>{item.l}</span>
-              </div>
-            ))}
-          </div>
+          {cd.days === 0 && cd.hours === 0 && cd.mins === 0 && cd.secs === 0 ? (
+            <div className={styles.liveNow}>已开播，请道友速回宗门</div>
+          ) : (
+            <div className={styles.countdown}>
+              {[
+                { v: cd.days, l: '天' },
+                { v: cd.hours, l: '时' },
+                { v: cd.mins, l: '分' },
+                { v: cd.secs, l: '秒' },
+              ].map((item) => (
+                <div key={item.l} className={styles.cdItem}>
+                  <span className={styles.cdNum}>{String(item.v).padStart(2, '0')}</span>
+                  <span className={styles.cdLabel}>{item.l}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           <p className={styles.desc}>
             韩立元婴大成，慕兰大战一触即发。新篇章、新建模、新特效 —— 国漫天花板荣耀归来。

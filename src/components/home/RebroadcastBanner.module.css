@@ -97,6 +97,21 @@
   margin-bottom: 3rem;
 }
 
+.liveNow {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--vermillion);
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 30px rgba(192,59,59,0.5);
+  margin-bottom: 3rem;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
 .cdItem {
   display: flex;
   flex-direction: column;
