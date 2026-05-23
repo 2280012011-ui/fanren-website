@@ -1,8 +1,17 @@
+.videoBg {
+  position: fixed; inset: 0; width: 100vw; height: 100vh;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+
 .page {
+  position: relative; z-index: 1;
   padding: 2rem 2rem 4rem;
   max-width: 720px;
   margin: 0 auto;
   min-height: 100vh;
+  background: rgba(245, 240, 232, 0.82);
+  backdrop-filter: blur(6px);
+  border-radius: 4px;
 }
 
 /* ═══ Header ═══ */

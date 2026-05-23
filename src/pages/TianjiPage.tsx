@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { drawFortune, fortuneList, type FortuneEntry } from '../data/tianji';
 import ScrollReveal from '../components/common/ScrollReveal';
@@ -6,6 +7,24 @@ import styles from './TianjiPage.module.css';
 
 export default function TianjiPage() {
   const [result, setResult] = useState<FortuneEntry | null>(null);
+
+  useEffect(() => {
+    const root = document.getElementById('root');
+    const prevBg = document.body.style.background;
+    const prevPos = root?.style.position || '';
+    const prevZ = root?.style.zIndex || '';
+    document.body.style.background = 'transparent';
+    if (root) { root.style.position = 'relative'; root.style.zIndex = '1'; }
+    return () => {
+      document.body.style.background = prevBg;
+      if (root) { root.style.position = prevPos; root.style.zIndex = prevZ; }
+    };
+  }, []);
+
+  const video = createPortal(
+    <video className={styles.videoBg} src="/videos/tianji-bg.mp4" autoPlay loop muted playsInline />,
+    document.body
+  );
   const [drawing, setDrawing] = useState(false);
 
   const handleDraw = useCallback(() => {
@@ -29,6 +48,7 @@ export default function TianjiPage() {
 
   return (
     <div className={styles.page}>
+      {video}
       <ScrollReveal>
         <div className={styles.header}>
           <h1 className={styles.title}>天机阁</h1>
