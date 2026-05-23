@@ -5,9 +5,13 @@ interface Comment {
   id: string; name: string; text: string; time: number; likes: number;
 }
 
+const PAGE_SIZE = 8;
+
 export default function CommentWall() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const [page, setPage] = useState(1);
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [sort, setSort] = useState<'time'|'likes'>('time');
@@ -24,13 +28,17 @@ export default function CommentWall() {
   };
 
   const fetchComments = useCallback(async () => {
-    const res = await fetch(`/api/comments?sort=${sort}`);
+    const res = await fetch(`/api/comments?sort=${sort}&page=${page}&pageSize=${PAGE_SIZE}`);
     const data = await res.json();
     setComments(data.comments || []);
     setTotal(data.total || 0);
-  }, [sort]);
+    setTotalPages(data.totalPages || 1);
+  }, [sort, page]);
 
   useEffect(() => { fetchComments(); }, [fetchComments]);
+
+  // Reset to page 1 when sort changes
+  useEffect(() => { setPage(1); }, [sort]);
 
   const submit = async () => {
     const t = text.trim().slice(0, 100);
@@ -45,6 +53,7 @@ export default function CommentWall() {
     if (data.ok) {
       setText('');
       setName('');
+      setPage(1);
     }
     setLoading(false);
     fetchComments();
@@ -65,7 +74,6 @@ export default function CommentWall() {
     fetchComments();
   };
 
-  // Beijing time formatter (UTC+8)
   const fmt = (ts: number) => {
     const d = new Date(ts);
     const bj = new Date(d.getTime() + d.getTimezoneOffset() * 60000 + 8 * 3600000);
@@ -75,6 +83,21 @@ export default function CommentWall() {
     const h = String(bj.getHours()).padStart(2, '0');
     const min = String(bj.getMinutes()).padStart(2, '0');
     return `${y}/${m}/${day} ${h}:${min}（北京）`;
+  };
+
+  // Generate page numbers for pagination
+  const pageNumbers = () => {
+    const pages: (number | '...')[] = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      pages.push(1);
+      if (page > 3) pages.push('...');
+      for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) pages.push(i);
+      if (page < totalPages - 2) pages.push('...');
+      pages.push(totalPages);
+    }
+    return pages;
   };
 
   return (
@@ -88,27 +111,12 @@ export default function CommentWall() {
         </div>
 
         <div className={styles.inputRow}>
-          <input
-            className={styles.nameInput}
-            value={name}
-            onChange={e => setName(e.target.value)}
-            maxLength={8}
-            placeholder="道号（可选，8字内）"
-          />
+          <input className={styles.nameInput} value={name} onChange={e => setName(e.target.value)} maxLength={8} placeholder="道号（可选，8字内）" />
           <div className={styles.textInputWrap}>
-            <input
-              className={styles.input}
-              value={text}
-              onChange={e => setText(e.target.value)}
-              maxLength={100}
-              placeholder="留下你的修仙感悟…（最多100字）"
-              onKeyDown={e => e.key === 'Enter' && submit()}
-            />
+            <input className={styles.input} value={text} onChange={e => setText(e.target.value)} maxLength={100} placeholder="留下你的修仙感悟…（最多100字）" onKeyDown={e => e.key === 'Enter' && submit()} />
             <span className={styles.charCount}>{text.length}/100</span>
           </div>
-          <button className={styles.sendBtn} onClick={submit} disabled={loading}>
-            {loading ? '发送中…' : '发送传音符'}
-          </button>
+          <button className={styles.sendBtn} onClick={submit} disabled={loading}>{loading ? '发送中…' : '发送传音符'}</button>
         </div>
 
         <div className={styles.list}>
@@ -120,18 +128,26 @@ export default function CommentWall() {
               </div>
               <p className={styles.text}>{c.text}</p>
               <div className={styles.meta}>
-                <button
-                  className={`${styles.likeBtn} ${liked.has(c.id)?styles.liked:''}`}
-                  onClick={()=>toggleLike(c.id)}
-                >
-                  ✦ {c.likes}
-                </button>
+                <button className={`${styles.likeBtn} ${liked.has(c.id)?styles.liked:''}`} onClick={()=>toggleLike(c.id)}>✦ {c.likes}</button>
                 {showAdmin && <button className={styles.delBtn} onClick={()=>del(c.id)} title="删除">✕</button>}
               </div>
             </div>
           ))}
           {comments.length===0 && <p className={styles.empty}>暂无留言，留下第一条修仙感悟吧 ✦</p>}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className={styles.pagination}>
+            <button className={styles.pageBtn} onClick={()=>setPage(p=>Math.max(1,p-1))} disabled={page===1}>‹ 上一页</button>
+            {pageNumbers().map((p,i) =>
+              p === '...'
+                ? <span key={`dot-${i}`} className={styles.pageDot}>…</span>
+                : <button key={p} className={`${styles.pageBtn} ${p===page?styles.pageActive:''}`} onClick={()=>setPage(p)}>{p}</button>
+            )}
+            <button className={styles.pageBtn} onClick={()=>setPage(p=>Math.min(totalPages,p+1))} disabled={page===totalPages}>下一页 ›</button>
+          </div>
+        )}
 
         <div className={styles.adminRow}>
           {!showAdmin ? (

@@ -97,6 +97,30 @@
 .delBtn:hover { color:var(--vermillion); border-color:var(--vermillion); }
 .empty { text-align:center; padding:3rem 1rem; font-family:var(--font-display); color:var(--ink-faint); font-size:0.9rem; }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 1.5rem;
+}
+.pageBtn {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--ink-light);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 3px;
+  background: var(--rice-paper);
+  transition: all 0.2s;
+}
+.pageBtn:hover:not(:disabled) { color: var(--vermillion); border-color: var(--vermillion); }
+.pageBtn:disabled { opacity: 0.35; cursor: default; }
+.pageActive { color: #fff; background: var(--vermillion); border-color: var(--vermillion); }
+.pageActive:hover { color: #fff; }
+.pageDot { font-size: 0.7rem; color: var(--ink-faint); padding: 0 0.1rem; }
+
 /* Admin */
 .adminRow { margin-top:1.5rem; text-align:right; }
 .adminToggle { font-size:0.7rem; color:var(--ink-faint); border:none; background:none; cursor:pointer; }

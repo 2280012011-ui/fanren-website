@@ -33,12 +33,18 @@ export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
     const sort = searchParams.get('sort') || 'time';
+    const page = Math.max(1, parseInt(searchParams.get('page') || '1'));
+    const pageSize = Math.min(50, Math.max(5, parseInt(searchParams.get('pageSize') || '10')));
     let comments = await getComments();
     if (sort === 'likes') comments.sort((a, b) => b.likes - a.likes);
     else comments.sort((a, b) => b.time - a.time);
-    return Response.json({ comments, total: comments.length });
+    const total = comments.length;
+    const totalPages = Math.ceil(total / pageSize);
+    const start = (page - 1) * pageSize;
+    const paged = comments.slice(start, start + pageSize);
+    return Response.json({ comments: paged, total, totalPages, page, pageSize });
   } catch (err) {
-    return Response.json({ comments: [], total: 0, error: String(err) });
+    return Response.json({ comments: [], total: 0, totalPages: 0, error: String(err) });
   }
 }
 
@@ -50,7 +56,7 @@ export async function POST(req: Request) {
     const cleanName = (name || '').trim().slice(0, 8) || '无名道友';
     const comments = await getComments();
     comments.push({ id: genId(), name: cleanName, text: cleanText, time: Date.now(), likes: 0 });
-    if (comments.length > 500) comments.splice(0, comments.length - 500);
+    if (comments.length > 2000) comments.splice(0, comments.length - 2000);
     await setComments(comments);
     return Response.json({ ok: true });
   } catch (err) {
