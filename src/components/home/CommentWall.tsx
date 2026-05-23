@@ -50,10 +50,12 @@ export default function CommentWall() {
     fetchComments();
   };
 
-  const like = async (id: string) => {
-    if (liked.has(id)) return;
-    await fetch(`/api/comments?id=${id}`, { method: 'PATCH' });
-    updateLiked(new Set([...liked, id]));
+  const toggleLike = async (id: string) => {
+    const isLiked = liked.has(id);
+    await fetch(`/api/comments?id=${id}&action=${isLiked ? 'unlike' : 'like'}`, { method: 'PATCH' });
+    const next = new Set(liked);
+    isLiked ? next.delete(id) : next.add(id);
+    updateLiked(next);
     fetchComments();
   };
 
@@ -120,8 +122,7 @@ export default function CommentWall() {
               <div className={styles.meta}>
                 <button
                   className={`${styles.likeBtn} ${liked.has(c.id)?styles.liked:''}`}
-                  onClick={()=>like(c.id)}
-                  disabled={liked.has(c.id)}
+                  onClick={()=>toggleLike(c.id)}
                 >
                   ✦ {c.likes}
                 </button>

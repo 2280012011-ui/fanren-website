@@ -78,12 +78,15 @@ export async function DELETE(req: Request) {
 
 export async function PATCH(req: Request) {
   try {
-    const id = new URL(req.url).searchParams.get('id');
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get('id');
+    const action = searchParams.get('action') || 'like';
     if (!id) return Response.json({ error: '缺少ID' }, { status: 400 });
     const comments = await getComments();
     const c = comments.find(x => x.id === id);
     if (!c) return Response.json({ error: '未找到' }, { status: 404 });
-    c.likes = (c.likes || 0) + 1;
+    c.likes = (c.likes || 0) + (action === 'unlike' ? -1 : 1);
+    if (c.likes < 0) c.likes = 0;
     await setComments(comments);
     return Response.json({ ok: true, likes: c.likes });
   } catch (err) {
