@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { NAV_ITEMS } from '../../utils/constants';
+import MusicPlayer from './MusicPlayer';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -23,6 +24,7 @@ export default function Header() {
               <span className={styles.navDot} />
             </NavLink>
           ))}
+          <MusicPlayer />
         </nav>
       </div>
     </header>

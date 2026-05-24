@@ -226,9 +226,34 @@ function OrbitRing({ radius, color }: { radius:number; color:string }) {
 // ─── Scene ───
 function Scene({ onSelect }: { onSelect:(c:Character)=>void }) {
   const others = characters.filter(c=>c.id!=='han-li');
+
+  // Assign orbital rings by tag
+  const ringMap: Record<string, { radius: number; yBase: number; spread: number }> = {
+    '主角阵营':      { radius: 5.5, yBase: 0.5, spread: 1.2 },
+    '早期人脉':      { radius: 8,   yBase: -0.3, spread: 1.5 },
+    '越国七派':      { radius: 10.5, yBase: 0.8, spread: 1.8 },
+    '魔道六宗':      { radius: 13,  yBase: -1, spread: 2 },
+    '落云宗':        { radius: 15.5, yBase: 0.5, spread: 2.2 },
+    '乱星海':        { radius: 18.5, yBase: -0.5, spread: 2.5 },
+    '大晋':          { radius: 22,  yBase: 1, spread: 3 },
+    '天澜草原':      { radius: 25,  yBase: -0.8, spread: 1.5 },
+  };
+
+  // Group characters by tag
+  const groups: Record<string, Character[]> = {};
+  for (const c of others) {
+    const tag = c.tags[0] || 'other';
+    if (!groups[tag]) groups[tag] = [];
+    groups[tag].push(c);
+  }
+  for (const c of others.filter(c=>!Object.keys(ringMap).includes(c.tags[0]||''))) {
+    if (!groups['other']) groups['other'] = [];
+    groups['other'].push(c);
+  }
+
   return (
     <>
-      <OrbitControls enableDamping dampingFactor={0.08} minDistance={5} maxDistance={35} target={[0,0,0]} />
+      <OrbitControls enableDamping dampingFactor={0.08} minDistance={5} maxDistance={40} target={[0,0,0]} />
       <ambientLight intensity={0.5} />
       <pointLight position={[0,10,0]} intensity={4} color="#c4a84b" />
       <pointLight position={[12,-3,6]} intensity={1.2} color="#4466aa" />
@@ -237,11 +262,15 @@ function Scene({ onSelect }: { onSelect:(c:Character)=>void }) {
       <HanLiStar />
       <OrbitRing radius={10} color="#c4a84b" />
       <OrbitRing radius={16} color="#4466aa" />
-      {others.map((c,i)=>{
-        const angle=(i/others.length)*Math.PI*2 + i*0.3;
-        const radius=7+(i%3)*3.5+Math.sin(i*1.5)*2;
-        const yOff=Math.cos(i*2.1)*3.5;
-        return <CharPlanet key={c.id} char={c} angle={angle} radius={radius} yOff={yOff} onClick={()=>onSelect(c)}/>;
+      <OrbitRing radius={22} color="#88aacc" />
+      {Object.entries(groups).map(([tag, chars]) => {
+        const cfg = ringMap[tag] || { radius: 28, yBase: 0, spread: 3 };
+        return chars.map((c, i) => {
+          const angle = (i / chars.length) * Math.PI * 2 + (Math.random() * 0.3 - 0.15);
+          const radius = cfg.radius + (Math.random() - 0.5) * cfg.spread;
+          const yOff = cfg.yBase + (Math.random() - 0.5) * cfg.spread;
+          return <CharPlanet key={c.id} char={c} angle={angle} radius={radius} yOff={yOff} onClick={()=>onSelect(c)}/>;
+        });
       })}
     </>
   );

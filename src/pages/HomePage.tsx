@@ -98,9 +98,10 @@ export default function HomePage() {
             <div className={styles.changelogContent}>
               <p>5.24</p>
               <p>将背景视频的压缩率降低，稍微提升了画质；</p>
-              <p>优化了法宝页面：增大字体、补充介绍；</p>
-              <p>增加部分人物的肖像，补充部分人物介绍；</p>
-              <p>增大导航栏字体；</p>
+              <p>优化了法宝页面：重做布局、增大字体、补充介绍；</p>
+              <p>优化了人物页面：增加部分肖像、补充部分介绍；</p>
+              <p>增大了导航栏字体；</p>
+              <p>增加了BGM播放按钮；</p>
             </div>
           </motion.div>
         </motion.div>,

@@ -52,7 +52,7 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id:'t-07', sortOrder:7, title:'乱星海崛起', timeLabel:'约100岁', chapter:'乱星海篇', type:'treasure',
     location:'乱星海→虚天殿',
-    relatedCharacterIds:['han-li','nangong-wan','jinyin-laozu'],
+    relatedCharacterIds:['han-li','zi-ling','yuan-yao','ling-yuling','xinggong-shuangsheng'],
     relatedArtifactIds:['a-top-3'],
     description:'乱星海是韩立最重要的成长阶段。他经历极阴老祖追杀、结丹成功、炼制本命法宝。虚天殿开启后夺得虚天鼎与乾蓝冰焰，获得大量上古机缘，真正进入高阶修士博弈层面。从此韩立不再是低阶修士，而是拥有自保能力的结丹真人。',
     positionPercent:{x:58, y:64}, branchIndex:0,
@@ -68,7 +68,7 @@ export const timelineEvents: TimelineEvent[] = [
   {
     id:'t-09', sortOrder:9, title:'坠魔谷与昆吾山', timeLabel:'约400-600岁', chapter:'大晋篇', type:'battle',
     location:'天南坠魔谷→大晋昆吾山',
-    relatedCharacterIds:['han-li','wentian-ren'],
+    relatedCharacterIds:['han-li','nan-longhou','guiling-men-menzhu','qian-laomo'],
     relatedArtifactIds:['a-top-6','a-top-7','a-top-10'],
     description:'人界篇后期最宏大的阶段。先后参与坠魔谷探险、昆吾山封魔大战、上古魔界裂缝事件，遭遇大量元婴后期与化神强者。这一时期的韩立已彻底成长为老谋深算、底牌极多、极难杀死的"韩老魔"。人界灵气衰竭问题日益严重，他开始寻找飞升灵界的方法。',
     positionPercent:{x:55, y:84}, branchIndex:0,
