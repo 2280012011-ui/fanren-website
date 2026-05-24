@@ -143,15 +143,15 @@ function getPlanet(c: Character): PlanetConfig {
   if (c.id === 'mo-daifu') return { type:'lava', base:'#3a2010', accent:'#5a3020', size:0.7, orbitRadius:0 };
   if (c.id === 'wang-chan') return { type:'lava', base:'#3a1010', accent:'#6a2020', size:1.0, orbitRadius:0 };
   // Tag-based mappings (lower priority)
-  if (c.tags.includes('化神')) return { type:'ice', base:'#6677aa', accent:'#8899cc', size:1.3, orbitRadius:0 };
-  if (c.tags.includes('魔道六宗')||c.tags.includes('魔道')) return { type:'lava', base:'#3a1010', accent:'#6a2020', size:0.9, orbitRadius:0 };
-  if (c.tags.includes('妖族')||c.tags.includes('妖兽/灵兽')) return { type:'gas', base:'#445566', accent:'#667788', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('上古修士')) return { type:'rocky', base:'#776644', accent:'#998866', size:1.1, orbitRadius:0 };
+  if (c.tags.includes('魔道六宗')) return { type:'lava', base:'#3a1010', accent:'#6a2020', size:0.9, orbitRadius:0 };
   if (c.tags.includes('七玄门')) return { type:'moon', base:'#889988', accent:'#aabbaa', size:0.6, orbitRadius:0 };
   if (c.tags.includes('越国七派')) return { type:'earthlike', base:'#889966', accent:'#aabb77', size:0.85, orbitRadius:0 };
   if (c.tags.includes('乱星海')) return { type:'gas', base:'#556688', accent:'#7788aa', size:0.9, orbitRadius:0 };
+  if (c.tags.includes('早期人脉')) return { type:'moon', base:'#aaccaa', accent:'#ccddcc', size:0.75, orbitRadius:0 };
+  if (c.tags.includes('落云宗')) return { type:'earthlike', base:'#668866', accent:'#88aa88', size:0.85, orbitRadius:0 };
   if (c.tags.includes('大晋')) return { type:'rocky', base:'#887766', accent:'#aa9977', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('天南')) return { type:'earthlike', base:'#778866', accent:'#99aa77', size:0.8, orbitRadius:0 };
+  if (c.tags.includes('天澜草原')) return { type:'earthlike', base:'#aa9977', accent:'#ccbb99', size:0.8, orbitRadius:0 };
+  if (c.tags.includes('主角阵营')) return { type:'earthlike', base:'#aa8866', accent:'#ccaa88', size:0.95, orbitRadius:0 };
   return { type:'rocky', base:'#889999', accent:'#aabbbb', size:0.75, orbitRadius:0 };
 }
 
