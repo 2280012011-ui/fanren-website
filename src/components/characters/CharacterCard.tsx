@@ -8,10 +8,15 @@ interface Props {
 }
 
 export default function CharacterCard({ character }: Props) {
-  const { id, name, aliases, affiliation, tags } = character;
+  const { id, name, imageUrl, aliases, affiliation, tags } = character;
 
   return (
     <Link to={`${ROUTES.CHARACTERS}/${id}`} className={styles.card}>
+      {imageUrl && (
+        <div className={styles.photoOverlay}>
+          <img src={imageUrl} alt="" className={styles.photoImg} />
+        </div>
+      )}
       <div className={styles.info}>
         <h3 className={styles.name}>{name}</h3>
         {aliases.length > 0 && (

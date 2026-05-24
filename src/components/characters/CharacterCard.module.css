@@ -5,6 +5,7 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   overflow: hidden;
+  position: relative;
 }
 
 .card:hover {
@@ -12,8 +13,31 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.photoImg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  max-width: 70%;
+  object-fit: cover;
+  object-position: right center;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 85%, transparent 100%);
+  opacity: 0.85;
+}
+
 .info {
   padding: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
