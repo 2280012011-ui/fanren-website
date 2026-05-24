@@ -19,17 +19,17 @@
 .statusDeceased { color: var(--ink-faint); border: 1px solid var(--ink-faint); }
 
 .meta { display: flex; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.06); }
-.metaItem { font-size: 0.85rem; color: var(--ink-medium); }
-.metaItem strong { font-family: var(--font-display); color: var(--ink-light); margin-right: 0.4rem; font-size: 0.75rem; }
+.metaItem { font-size: 0.9rem; color: var(--ink-medium); }
+.metaItem strong { font-family: var(--font-display); color: var(--ink-light); margin-right: 0.4rem; font-size: 0.8rem; }
 
 .section { margin-bottom: 1.5rem; }
-.sectionTitle { font-size: 0.95rem; color: var(--vermillion); letter-spacing: 0.06em; margin-bottom: 0.5rem; font-family: var(--font-display); border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
-.text { font-size: 0.9rem; color: var(--ink-medium); line-height: 1.9; text-indent: 2em; }
+.sectionTitle { font-size: 1.05rem; color: var(--vermillion); letter-spacing: 0.06em; margin-bottom: 0.5rem; font-family: var(--font-display); border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
+.text { font-size: 1rem; color: var(--ink-medium); line-height: 1.9; text-indent: 2em; }
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.tag { font-size: 0.75rem; color: var(--jade); font-family: var(--font-display); letter-spacing: 0.04em; padding: 0.2rem 0.6rem; background: rgba(91,140,90,0.06); border: 1px solid rgba(91,140,90,0.15); }
+.tag { font-size: 0.8rem; color: var(--jade); font-family: var(--font-display); letter-spacing: 0.04em; padding: 0.2rem 0.6rem; background: rgba(91,140,90,0.06); border: 1px solid rgba(91,140,90,0.15); }
 
 .endingSection { background: rgba(192,59,59,0.04); border-left: 3px solid var(--vermillion); padding: 1rem 1.25rem; border-radius: 0 4px 4px 0; }
 .endingSection .sectionTitle { color: var(--vermillion-dark); border-bottom: none; }

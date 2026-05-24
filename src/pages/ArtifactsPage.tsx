@@ -47,7 +47,7 @@ export default function ArtifactsPage() {
   return (
     <div className={styles.page}>
       <ScrollReveal>
-        <SectionTitle title="法宝图鉴" subtitle="韩立人界篇所持法宝一览 · 点击卡片查看详情" />
+        <SectionTitle title="法宝图鉴" subtitle="人界篇出现过的部分法宝一览 · 点击卡片查看详情" />
       </ScrollReveal>
 
       <div className={styles.layout}>

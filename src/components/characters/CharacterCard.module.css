@@ -25,21 +25,21 @@
 }
 
 .name {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   letter-spacing: 0.06em;
   color: var(--ink-heavy);
   white-space: nowrap;
 }
 
 .aliases {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--ink-faint);
   margin-bottom: 0.5rem;
   line-height: 1.5;
 }
 
 .affiliation {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--ink-light);
   font-family: var(--font-display);
   letter-spacing: 0.05em;

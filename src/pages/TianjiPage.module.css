@@ -42,8 +42,8 @@
 .sealContainer { margin-bottom: 1.5rem; }
 .sealSvg { width: 100px; height: 100px; animation: sealFloat 3s ease-in-out infinite; }
 @keyframes sealFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-.emptyText { font-family: var(--font-display); font-size: 1.1rem; color: var(--ink-light); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
-.emptyHint { font-family: var(--font-body); font-size: 0.85rem; color: var(--ink-faint); }
+.emptyText { font-family: var(--font-display); font-size: 1.2rem; color: var(--ink-light); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+.emptyHint { font-family: var(--font-body); font-size: 0.95rem; color: var(--ink-faint); }
 
 /* ═══ Drawing state ═══ */
 .drawingCard { text-align: center; padding: 4rem 2rem; }
@@ -97,8 +97,8 @@
 .storyDivider { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; }
 .storyLine { width: 30px; height: 1px; background: var(--ink-faint); opacity: 0.4; }
 .storyIcon { color: var(--vermillion); font-size: 0.6rem; }
-.storyTitle { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-heavy); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
-.storyText { font-family: var(--font-body); font-size: 0.9rem; color: var(--ink-medium); line-height: 2; text-indent: 2em; max-width: 480px; margin: 0 auto; }
+.storyTitle { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink-heavy); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.storyText { font-family: var(--font-body); font-size: 1rem; color: var(--ink-medium); line-height: 2; text-indent: 2em; max-width: 480px; margin: 0 auto; }
 
 .drawAgainBtn {
   margin-top: 1.5rem;
@@ -128,5 +128,5 @@
 .refGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.5rem; }
 .refItem { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; }
 .refDot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-.refName { font-family: var(--font-display); font-size: 0.85rem; color: var(--ink-medium); letter-spacing: 0.06em; white-space: nowrap; }
-.refDesc { font-size: 0.7rem; color: var(--ink-faint); }
+.refName { font-family: var(--font-display); font-size: 0.95rem; color: var(--ink-medium); letter-spacing: 0.06em; white-space: nowrap; }
+.refDesc { font-size: 0.8rem; color: var(--ink-faint); }
