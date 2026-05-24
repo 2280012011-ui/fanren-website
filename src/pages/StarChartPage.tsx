@@ -128,14 +128,30 @@ function generatePlanetTexture(
 interface PlanetConfig { type: 'star'|'gas'|'rocky'|'ice'|'lava'|'earthlike'|'moon'; base: string; accent: string; size: number; orbitRadius: number }
 function getPlanet(c: Character): PlanetConfig {
   if (c.id === 'han-li') return { type:'star', base:'#c49030', accent:'#e8c840', size:2.2, orbitRadius:0 };
-  if (c.tags.includes('魔道')||c.tags.includes('魔道六宗')) return { type:'lava', base:'#3a1010', accent:'#6a2020', size:0.9, orbitRadius:0 };
-  if (c.tags.includes('妖族')||c.tags.includes('妖兽/灵兽')) return { type:'gas', base:'#445566', accent:'#667788', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('上古修士')) return { type:'rocky', base:'#776644', accent:'#998866', size:1.1, orbitRadius:0 };
-  if (c.tags.includes('化神')) return { type:'ice', base:'#6677aa', accent:'#8899cc', size:1.3, orbitRadius:0 };
-  if (c.tags.includes('七玄门')) return { type:'moon', base:'#889988', accent:'#aabbaa', size:0.7, orbitRadius:0 };
+  // Specific character overrides
   if (c.id === 'nangong-wan') return { type:'ice', base:'#dde0f0', accent:'#f0e8ff', size:1.4, orbitRadius:0 };
   if (c.id === 'yin-yue') return { type:'ice', base:'#7788aa', accent:'#99aacc', size:1.2, orbitRadius:0 };
   if (c.id === 'zi-ling') return { type:'earthlike', base:'#886688', accent:'#aa88aa', size:1.1, orbitRadius:0 };
+  if (c.id === 'xin-ruyin') return { type:'moon', base:'#aabbcc', accent:'#ccddff', size:0.8, orbitRadius:0 };
+  if (c.id === 'mei-ning') return { type:'moon', base:'#ccbbbb', accent:'#eedddd', size:0.75, orbitRadius:0 };
+  if (c.id === 'yuan-yao') return { type:'earthlike', base:'#998877', accent:'#bbaa99', size:0.85, orbitRadius:0 };
+  if (c.id === 'song-yu') return { type:'earthlike', base:'#8899aa', accent:'#aabbcc', size:0.8, orbitRadius:0 };
+  if (c.id === 'mu-peiling') return { type:'earthlike', base:'#998888', accent:'#bbaaaa', size:0.8, orbitRadius:0 };
+  if (c.id === 'chen-qiaoqian') return { type:'moon', base:'#aabb99', accent:'#ccddaa', size:0.75, orbitRadius:0 };
+  if (c.id === 'mo-caihuan') return { type:'moon', base:'#ccbbaa', accent:'#eeddcc', size:0.65, orbitRadius:0 };
+  if (c.id === 'li-feyu') return { type:'moon', base:'#99aa88', accent:'#bbccaa', size:0.7, orbitRadius:0 };
+  if (c.id === 'mo-daifu') return { type:'lava', base:'#3a2010', accent:'#5a3020', size:0.7, orbitRadius:0 };
+  if (c.id === 'wang-chan') return { type:'lava', base:'#3a1010', accent:'#6a2020', size:1.0, orbitRadius:0 };
+  // Tag-based mappings (lower priority)
+  if (c.tags.includes('化神')) return { type:'ice', base:'#6677aa', accent:'#8899cc', size:1.3, orbitRadius:0 };
+  if (c.tags.includes('魔道六宗')||c.tags.includes('魔道')) return { type:'lava', base:'#3a1010', accent:'#6a2020', size:0.9, orbitRadius:0 };
+  if (c.tags.includes('妖族')||c.tags.includes('妖兽/灵兽')) return { type:'gas', base:'#445566', accent:'#667788', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('上古修士')) return { type:'rocky', base:'#776644', accent:'#998866', size:1.1, orbitRadius:0 };
+  if (c.tags.includes('七玄门')) return { type:'moon', base:'#889988', accent:'#aabbaa', size:0.6, orbitRadius:0 };
+  if (c.tags.includes('越国七派')) return { type:'earthlike', base:'#889966', accent:'#aabb77', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('乱星海')) return { type:'gas', base:'#556688', accent:'#7788aa', size:0.9, orbitRadius:0 };
+  if (c.tags.includes('大晋')) return { type:'rocky', base:'#887766', accent:'#aa9977', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('天南')) return { type:'earthlike', base:'#778866', accent:'#99aa77', size:0.8, orbitRadius:0 };
   return { type:'rocky', base:'#889999', accent:'#aabbbb', size:0.75, orbitRadius:0 };
 }
 
