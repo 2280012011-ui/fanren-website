@@ -28,7 +28,7 @@ export default function CommentWall() {
   };
 
   const fetchComments = useCallback(async () => {
-    const res = await fetch(`https://fanren-website.vercel.app/api/comments?sort=${sort}&page=${page}&pageSize=${PAGE_SIZE}`);
+    const res = await fetch(`/api/comments?sort=${sort}&page=${page}&pageSize=${PAGE_SIZE}`);
     const data = await res.json();
     setComments(data.comments || []);
     setTotal(data.total || 0);
@@ -44,7 +44,7 @@ export default function CommentWall() {
     const t = text.trim().slice(0, 100);
     if (!t || loading) return;
     setLoading(true);
-    const res = await fetch('https://fanren-website.vercel.app/api/comments', {
+    const res = await fetch('/api/comments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: t, name: name.trim() }),
@@ -61,7 +61,7 @@ export default function CommentWall() {
 
   const toggleLike = async (id: string) => {
     const isLiked = liked.has(id);
-    await fetch(`https://fanren-website.vercel.app/api/comments?id=${id}&action=${isLiked ? 'unlike' : 'like'}`, { method: 'PATCH' });
+    await fetch(`/api/comments?id=${id}&action=${isLiked ? 'unlike' : 'like'}`, { method: 'PATCH' });
     const next = new Set(liked);
     isLiked ? next.delete(id) : next.add(id);
     updateLiked(next);
@@ -70,7 +70,7 @@ export default function CommentWall() {
 
   const del = async (id: string) => {
     if (!adminPw) return;
-    await fetch(`https://fanren-website.vercel.app/api/comments?id=${id}&pw=${encodeURIComponent(adminPw)}`, { method: 'DELETE' });
+    await fetch(`/api/comments?id=${id}&pw=${encodeURIComponent(adminPw)}`, { method: 'DELETE' });
     fetchComments();
   };
 

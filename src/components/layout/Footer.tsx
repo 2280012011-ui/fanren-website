@@ -6,7 +6,7 @@ export default function Footer() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch('https://fanren-website.vercel.app/api/views')
+    fetch('/api/views')
       .then(r => {
         if (!r.ok) throw new Error('api error');
         return r.json();
