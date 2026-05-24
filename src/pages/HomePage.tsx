@@ -12,6 +12,7 @@ import styles from './HomePage.module.css';
 
 export default function HomePage() {
   const [showAbout, setShowAbout] = useState(false);
+  const [showChangelog, setShowChangelog] = useState(false);
 
   // Make body transparent and lift root above portal video
   useEffect(() => {
@@ -63,10 +64,11 @@ export default function HomePage() {
         <CommentWall />
       </div>
 
-      {/* About button */}
+      {/* Bottom-right buttons */}
       <button className={styles.aboutBtn} onClick={() => setShowAbout(true)}>？</button>
+      <button className={styles.changelogBtn} onClick={() => setShowChangelog(true)}>更新日志</button>
 
-      {/* About popup via portal to bypass framer-motion */}
+      {/* About popup */}
       {showAbout && createPortal(
         <motion.div className={styles.aboutOverlay} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={() => setShowAbout(false)}>
           <motion.div className={styles.aboutCard} initial={{opacity:0,scale:0.9,y:20}} animate={{opacity:1,scale:1,y:0}} exit={{opacity:0,scale:0.9,y:20}} onClick={e=>e.stopPropagation()}>
@@ -82,6 +84,24 @@ export default function HomePage() {
 
 感谢诸位道友支持！
             </p>
+          </motion.div>
+        </motion.div>,
+        document.body
+      )}
+
+      {/* Changelog popup */}
+      {showChangelog && createPortal(
+        <motion.div className={styles.aboutOverlay} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} onClick={() => setShowChangelog(false)}>
+          <motion.div className={styles.aboutCard} initial={{opacity:0,scale:0.9,y:20}} animate={{opacity:1,scale:1,y:0}} exit={{opacity:0,scale:0.9,y:20}} onClick={e=>e.stopPropagation()}>
+            <button className={styles.aboutClose} onClick={() => setShowChangelog(false)}>×</button>
+            <h3 className={styles.changelogTitle}>更新日志</h3>
+            <div className={styles.changelogContent}>
+              <p>5.24</p>
+              <p>将背景视频的压缩率降低，稍微提升了画质；</p>
+              <p>优化了法宝页面：增大字体、补充介绍；</p>
+              <p>增加部分人物的肖像，补充部分人物介绍；</p>
+              <p>增大导航栏字体；</p>
+            </div>
           </motion.div>
         </motion.div>,
         document.body
