@@ -82,7 +82,7 @@ export default function CommentWall() {
     const day = bj.getDate();
     const h = String(bj.getHours()).padStart(2, '0');
     const min = String(bj.getMinutes()).padStart(2, '0');
-    return `${y}/${m}/${day} ${h}:${min}（北京）`;
+    return `${y}/${m}/${day} ${h}:${min}`;
   };
 
   // Generate page numbers for pagination

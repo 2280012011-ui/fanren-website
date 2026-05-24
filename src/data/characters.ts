@@ -65,6 +65,10 @@ export const characters: Character[] = [
   { id:'dong-xuaner', name:'董萱儿', aliases:[], imageUrl:'', realm:'筑基期', affiliation:'黄枫谷',
     description:'拥有媚术天赋的女修，容貌极美。', personality:'擅长媚术', techniques:['媚术','掩月宗功法'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'曾与韩立同行'}], firstAppearChapter:'越国篇', status:'departed', tags:['越国七派'], ending:'后期淡出剧情。' },
+  { id:'yan-ruyan', name:'燕如嫣', aliases:[], imageUrl:'', realm:'结丹期', affiliation:'燕家堡→鬼灵门',
+    description:'燕如嫣出身越国燕家堡，拥有极其罕见的"天灵根"资质，因此自幼便被视为燕家未来的核心希望。韩立与她真正产生交集，是在"燕家堡夺宝大会"时期。当时燕家堡已经暗中投靠魔道鬼灵门，而燕如嫣也被王蝉看中，逐渐卷入魔道布局之中。她表面上仍是越国修仙家族的天之骄女，实际上却已经成为正魔大战中的关键棋子。韩立在燕家堡事件中亲眼见证魔道阴谋与血祭大阵爆发，也第一次真正感受到修仙界大势倾轧的残酷，而燕如嫣则在这场风暴中与韩立渐行渐远。后来她正式加入鬼灵门，并凭借惊人资质迅速成长，最终成为魔道一方的重要人物。燕如嫣这一角色最特别的地方，在于她并非单纯善恶分明的人物，而是被时代与宗门裹挟着走向魔道道路的"天才女修"，她也象征着越国修仙界在正魔大战中彻底崩塌的开始。',
+    personality:'天灵根天才、被时代裹挟', techniques:['天灵根资质','魔道功法'],
+    relations:[{targetId:'han-li',targetName:'韩立',relation:'旧识渐远'},{targetId:'wang-chan',targetName:'王蝉',relation:'被卷入魔道'}], firstAppearChapter:'越国篇', status:'alive', tags:['魔道六宗'], ending:'加入鬼灵门，成为魔道重要人物。' },
 
   // ═══ 魔道六宗相关 ═══
   { id:'wang-chan', name:'王蝉', aliases:['王蝉老祖'], imageUrl:'', realm:'元婴期', affiliation:'鬼灵门',

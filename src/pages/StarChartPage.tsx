@@ -174,20 +174,14 @@ function HanLiStar() {
   const cfg = getPlanet(characters.find(c=>c.id==='han-li')!);
   const tex = getTexture(cfg);
   const mesh = useRef<THREE.Mesh>(null);
-  const aura = useRef<THREE.Mesh>(null);
   useFrame(() => {
     if(mesh.current) mesh.current.rotation.y += 0.002;
-    if(aura.current) { aura.current.rotation.y += 0.001; aura.current.scale.setScalar(1 + Math.sin(Date.now()*0.001)*0.03); }
   });
   return (
     <group>
       <mesh ref={mesh}>
         <sphereGeometry args={[cfg.size, 64, 64]} />
         <meshStandardMaterial map={tex} emissive="#e8c840" emissiveIntensity={0.6} emissiveMap={tex} roughness={0.3} />
-      </mesh>
-      <mesh ref={aura}>
-        <sphereGeometry args={[cfg.size*1.35, 32, 32]} />
-        <meshBasicMaterial color="#e8d48b" transparent opacity={0.06} />
       </mesh>
       <Billboard position={[0, cfg.size+0.8, 0]}>
         <Text fontSize={0.65} color="#e8d48b" anchorX="center" anchorY="middle" outlineWidth={0.04} outlineColor="#000">韩立</Text>
