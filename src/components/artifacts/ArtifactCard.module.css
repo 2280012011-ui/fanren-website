@@ -24,13 +24,13 @@
 }
 
 .name {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   letter-spacing: 0.06em;
   color: var(--ink-heavy);
 }
 
 .grade {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-family: var(--font-display);
   letter-spacing: 0.06em;
   color: var(--vermillion);
@@ -41,7 +41,7 @@
 
 .type {
   display: inline-block;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-family: var(--font-display);
   letter-spacing: 0.05em;
   color: var(--jade);
@@ -49,7 +49,7 @@
 }
 
 .desc {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--ink-medium);
   line-height: 1.8;
   margin-bottom: 0.75rem;
@@ -63,7 +63,7 @@
 }
 
 .ability {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--gold);
   padding: 0.15rem 0.5rem;
   background: rgba(196, 168, 75, 0.08);
@@ -72,7 +72,7 @@
 }
 
 .acquisition {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--ink-faint);
   line-height: 1.5;
 }
