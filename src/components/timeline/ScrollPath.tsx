@@ -8,13 +8,33 @@ import styles from './ScrollPath.module.css';
 const VB = 100;
 const pos = (e: TimelineEvent) => e.positionPercent;
 
-function wavePath(events: TimelineEvent[]): string {
+// ─── Catmull-Rom → Cubic Bezier (guarantees C1-smooth curve) ───
+function smoothPath(events: TimelineEvent[]): string {
   const s = [...events].sort((a, b) => a.sortOrder - b.sortOrder);
   if (s.length < 2) return '';
-  let d = `M ${pos(s[0]).x} ${pos(s[0]).y} `;
-  for (let i = 1; i < s.length; i++) {
-    const p = pos(s[i - 1]), c = pos(s[i]);
-    d += `C ${p.x + (c.x - p.x) * 0.4} ${p.y + (c.y - p.y) * 0.3}, ${p.x + (c.x - p.x) * 0.6} ${p.y + (c.y - p.y) * 0.7}, ${c.x} ${c.y} `;
+  const pts = s.map(e => ({ x: pos(e).x, y: pos(e).y }));
+  const n = pts.length;
+
+  let d = `M ${pts[0].x} ${pts[0].y}`;
+
+  for (let i = 0; i < n - 1; i++) {
+    const p0 = pts[i === 0 ? 0 : i - 1];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[i + 2 >= n ? n - 1 : i + 2];
+
+    // Catmull-Rom tangents with tension 0.5
+    const t1x = (p2.x - p0.x) * 0.5;
+    const t1y = (p2.y - p0.y) * 0.5;
+    const t2x = (p3.x - p1.x) * 0.5;
+    const t2y = (p3.y - p1.y) * 0.5;
+
+    const cp1x = p1.x + t1x / 3;
+    const cp1y = p1.y + t1y / 3;
+    const cp2x = p2.x - t2x / 3;
+    const cp2y = p2.y - t2y / 3;
+
+    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
   }
   return d;
 }
@@ -23,7 +43,7 @@ export default function ScrollPath() {
   const [sel, setSel] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const sorted = [...timelineEvents].sort((a, b) => a.sortOrder - b.sortOrder);
-  const pathD = wavePath(timelineEvents);
+  const pathD = smoothPath(timelineEvents);
   const selected = timelineEvents.find((e) => e.id === sel) || null;
 
   return (
@@ -40,7 +60,7 @@ export default function ScrollPath() {
             </linearGradient>
           </defs>
 
-          {/* ═══ GLOWING LINE ═══ */}
+          {/* ═══ GLOWING SMOOTH CURVE ═══ */}
           <path d={pathD} fill="none" stroke="url(#fg)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" opacity="0.1" filter="url(#n3)"/>
           <path d={pathD} fill="none" stroke="url(#fg)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" filter="url(#n2)"/>
           <path d={pathD} fill="none" stroke="url(#fg)" strokeWidth="0.45" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" filter="url(#n1)"/>
@@ -67,28 +87,20 @@ export default function ScrollPath() {
                 onMouseEnter={() => setHovered(e.id)}
                 onMouseLeave={() => setHovered(null)}
               >
-                {/* glow aura */}
                 <circle cx={cx} cy={cy} r={active ? 4.5 : 2.2} fill={color} opacity={active ? 0.2 : 0.06} filter="url(#n2)">
                   {isSel && <animate attributeName="r" values="4.5;6;4.5" dur="1.8s" repeatCount="indefinite"/>}
                 </circle>
-                {/* ring */}
                 <circle cx={cx} cy={cy} r={active ? 1.5 : 1} fill="rgba(0,0,0,0.5)" stroke={color} strokeWidth={active ? 0.35 : 0.22}/>
-                {/* core */}
                 <circle cx={cx} cy={cy} r={active ? 0.6 : 0.35} fill={color} filter="url(#n1)"/>
 
-                {/* title — tight above node */}
                 <text x={lx} y={cy - 1.2} fill={active ? color : '#fff'} stroke="rgba(0,0,0,0.6)" strokeWidth="0.45" paintOrder="stroke fill" fontFamily="var(--font-display)" fontSize={active ? 2.8 : 2.4} fontWeight="bold" textAnchor={ta} letterSpacing="0.03em">{e.title}</text>
-
-                {/* time label — tight below node, always visible */}
                 <text x={lx} y={cy + 2.8} fill={active ? '#fff' : 'rgba(255,255,255,0.7)'} stroke="rgba(0,0,0,0.5)" strokeWidth="0.35" paintOrder="stroke fill" fontFamily="var(--font-display)" fontSize="1.5" textAnchor={ta} letterSpacing="0.04em">{e.timeLabel}</text>
-
-                {/* type badge — below time, always visible */}
                 <text x={lx} y={cy + 5} fill={color} stroke="rgba(0,0,0,0.45)" strokeWidth="0.3" paintOrder="stroke fill" fontFamily="var(--font-display)" fontSize="1.3" fontWeight="bold" textAnchor={ta} letterSpacing="0.03em">{typeLabel}</text>
               </g>
             );
           })}
 
-          {/* start & end */}
+          {/* start & end markers */}
           <circle cx={pos(sorted[0]).x} cy={pos(sorted[0]).y} r="2.2" fill="none" stroke="#c03b3b" strokeWidth="0.3" strokeDasharray="0.6 0.5" opacity="0.4"/>
           <text x={pos(sorted[0]).x - 4} y={pos(sorted[0]).y + 5} fill="#e8d48b" fontFamily="var(--font-display)" fontSize="2" textAnchor="end">起</text>
           <circle cx={pos(sorted[sorted.length-1]).x} cy={pos(sorted[sorted.length-1]).y} r="2.2" fill="rgba(0,0,0,0.4)" stroke="#c4a84b" strokeWidth="0.4" opacity="0.7" filter="url(#n1)"/>
