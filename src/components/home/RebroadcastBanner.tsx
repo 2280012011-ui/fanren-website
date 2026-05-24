@@ -3,7 +3,7 @@ import ScrollReveal from '../common/ScrollReveal';
 import styles from './RebroadcastBanner.module.css';
 
 function getCountdown() {
-  const target = new Date('2026-06-13T12:00:00+08:00').getTime();
+  const target = new Date('2026-06-13T11:00:00+08:00').getTime();
   const now = Date.now();
   const diff = Math.max(0, target - now);
   return {
