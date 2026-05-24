@@ -102,6 +102,7 @@ export default function HomePage() {
               <p>优化了人物页面：增加部分肖像、补充部分介绍；</p>
               <p>增大了导航栏字体；</p>
               <p>增加了BGM播放按钮；</p>
+              <p>现已支持国内访问：https://fanren-website.pages.dev/；</p>
             </div>
           </motion.div>
         </motion.div>,
