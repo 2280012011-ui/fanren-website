@@ -49,6 +49,8 @@
   overflow-y: hidden;
   position: relative;
   z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .imageView::-webkit-scrollbar { height: 10px; }
