@@ -44,7 +44,7 @@ export const characters: Character[] = [
     personality:'端庄秀丽、温和细腻、谨慎克制', techniques:['落云宗功法'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'倾慕之人'}], firstAppearChapter:'大晋篇', status:'alive', tags:['落云宗'], ending:'与韩立渐行渐远，继续在宗门修炼。' },
   { id:'mo-caihuan', name:'墨彩环', aliases:[], imageUrl:'/images/characters/mo-caihuan.webp', realm:'凡人', affiliation:'七玄门',
-    description:'墨彩环是墨大夫之女，容貌秀丽、性格温柔善良，对韩立怀有真挚而单纯的感情。她不像修仙界中的女修那样追逐境界与利益，更像一个普通凡间女子，因此身上带有浓厚的人间烟火气。韩立在七玄门时期与她相识，墨彩环也曾对韩立产生依赖与爱慕，但由于韩立踏上修仙之路，两人最终渐行渐远。她没有参与后期宏大的修仙争斗，也没有惊天动地的命运转折，却恰恰因此成为韩立"凡人岁月"的象征之一——代表着韩立如果没有踏入修仙界，或许能够拥有的平凡人生，因此在许多读者心中，她始终带着一种安静而遗憾的白月光色彩。',
+    description:'墨彩环是墨大夫之女，容貌秀丽、性格温柔善良，对韩立怀有真挚而单纯的感情。她不像修仙界中的女修那样追逐境界与利益，更像一个普通凡间女子，因此身上带有浓厚的人间烟火气。韩立在七玄门时期与她相识，墨彩环也曾对韩立产生依赖与爱慕，但由于韩立踏上修仙之路，两人最终渐行渐远。她没有参与后期宏大的修仙争斗，也没有惊天动地的命运转折，却恰恰因此成为韩立"凡人岁月"的象征之一——代表着韩立如果没有踏入修仙界，或许能够拥有的平凡人生，因此在许多读者心中，她始终带着一种安静而遗憾的白月光色彩。"韩大哥，没有灵根，真的不能成为修仙者吗？？"',
     personality:'温柔善良、真挚单纯、人间烟火气', techniques:['无'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'早期爱慕之人'},{targetId:'mo-daifu',targetName:'墨居仁',relation:'女儿'}], firstAppearChapter:'第1章', status:'departed', tags:['早期人脉'], ending:'与韩立渐行渐远，在凡间度过一生。' },
 
@@ -103,7 +103,7 @@ export const characters: Character[] = [
   { id:'wu-chou', name:'乌丑', aliases:[], imageUrl:'/images/characters/wu-chou.webp', realm:'结丹期', affiliation:'极阴岛',
     description:'极阴老祖的后人，结丹期修士，嚣张狠毒目中无人。因其祖极阴老祖的威名在极阴岛上横行无忌。在虚天殿副本中跟随极阴老祖参与争夺，因过于狂妄触怒韩立，被韩立以辟邪神雷一击毙命。', personality:'嚣张狠毒', techniques:['极阴功法'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'敌人'}], firstAppearChapter:'乱星海篇', status:'deceased', tags:['乱星海'], ending:'死于韩立之手。' },
-  { id:'feng-xi', name:'风希', aliases:[], imageUrl:'/images/characters/feng-xi.webp', realm:'元婴期', affiliation:'妖族',
+  { id:'feng-xi', name:'风希', aliases:['贵人鸟'], imageUrl:'/images/characters/feng-xi.webp', realm:'元婴期', affiliation:'妖族',
     description:'乱星海化形期妖修，修为相当于元婴中期，本体为某种飞禽类妖兽。与毒蛟、龟妖联手猎杀上古巨鸟雷鹏，取其骸骨炼制风雷翅，为此不惜追杀筑基期的韩立。韩立凭借掌天瓶催熟灵药快速提升实力，最终反杀毒蛟、龟妖并从风希手中抢夺风雷翅。风希逃出生天后仍活跃于乱星海，对韩立恨之入骨但始终无法报仇。', personality:'霸道强横', techniques:['妖族秘法'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'曾追杀韩立'}], firstAppearChapter:'乱星海篇', status:'alive', tags:['乱星海'], ending:'后期仍活跃。' },
   { id:'xinggong-shuangsheng', name:'星宫双圣', aliases:[], imageUrl:'', realm:'元婴期', affiliation:'星宫',
