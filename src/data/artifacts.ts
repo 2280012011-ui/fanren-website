@@ -103,7 +103,6 @@ export const artifacts: Artifact[] = [
     abilities:['高速飞行','长距离赶路','节省法力'], acquisition:'购得', firstAppearChapter:'大晋篇', notableUsage:'高阶修士远行探索的重要工具' },
   { id:'a-pojinzhu', name:'破禁珠', type:'辅助法宝', grade:'灵器', ownerId:H, ownerName:'韩立', description:'可破除阵法禁制的宝珠。', abilities:['破解禁制'], acquisition:'购得', firstAppearChapter:'人界篇中期', notableUsage:'' },
   { id:'a-julingzhu', name:'聚灵珠', type:'辅助法宝', grade:'灵器', ownerId:H, ownerName:'韩立', description:'自行吸纳天地灵气存储，闭关修炼保障。', abilities:['灵气储蓄'], acquisition:'黄枫谷坊市购得', firstAppearChapter:'黄枫谷篇', notableUsage:'' },
-  { id:'a-yirong-mianju', name:'易容面具', type:'辅助法宝', grade:'法器', ownerId:H, ownerName:'韩立', description:'可改变容貌的灵具，韩立常用。', abilities:['易容','隐匿身份'], acquisition:'购得', firstAppearChapter:'人界篇早期', notableUsage:'' },
   { id:'a-chuansong-zhenpan', name:'传送阵盘', type:'辅助法宝', grade:'古宝', ownerId:H, ownerName:'韩立', description:'可随身携带的小型传送阵盘，关键时刻传送脱身。', abilities:['传送脱身'], acquisition:'古修遗迹所得', firstAppearChapter:'乱星海篇', notableUsage:'' },
   { id:'a-tianjifu', name:'天机府', type:'辅助法宝', grade:'古宝', ownerId:H, ownerName:'韩立', description:'可随身携带的洞府法宝，展开化作完整修炼府邸。', abilities:['移动洞府','修炼场所'], acquisition:'天机府所得', firstAppearChapter:'大晋篇', notableUsage:'' },
 
@@ -114,7 +113,9 @@ export const artifacts: Artifact[] = [
   { id:'a-shijinchong', name:'噬金虫', type:'灵兽/灵虫', grade:'通天灵宝', ownerId:H, ownerName:'韩立', description:'见十大至宝。', abilities:['无物不噬','群攻'], acquisition:'小寰岛洞府发现', firstAppearChapter:'人界篇早期', notableUsage:'' },
   { id:'a-chengshu-shijin', name:'成熟体噬金虫', type:'灵兽/灵虫', grade:'通天灵宝', ownerId:H, ownerName:'韩立', description:'噬金虫完全成熟形态，金色个体，威力堪比通天灵宝。', abilities:['吞噬万物'], acquisition:'噬金虫进化', firstAppearChapter:'人界篇后期', notableUsage:'' },
   { id:'a-sanse-shijin', name:'三色噬金虫', type:'灵兽/灵虫', grade:'通天灵宝', ownerId:H, ownerName:'韩立', description:'以金雷竹竹叶喂养后异变的噬金虫，身具三色更为强大。', abilities:['三色之力','更强吞噬'], acquisition:'噬金虫变异', firstAppearChapter:'人界篇后期', notableUsage:'' },
-  { id:'a-xueyu-zhizhu', name:'血玉蜘蛛', type:'灵兽/灵虫', grade:'灵器', ownerId:H, ownerName:'韩立', description:'通体血红的蜘蛛灵兽，吐出血玉蛛丝坚韧无比。', abilities:['血玉蛛丝','困敌'], acquisition:'乱星海所得', firstAppearChapter:'乱星海篇', notableUsage:'' },
+  { id:'a-xueyu-zhizhu', name:'血玉蜘蛛', type:'灵兽/灵虫', grade:'古宝', ownerId:H, ownerName:'韩立',
+    description:'血玉蜘蛛是极具代表性的天地灵虫之一，通体血红如玉，外形妖异，属于极其罕见且凶名极大的异种妖虫。它最经典的剧情出现在乱星海"虚天殿"篇章，因为开启虚天鼎必须依靠血玉蜘蛛喷吐的特殊蛛丝，所以此虫成为各方元婴老怪争夺的重要目标。极阴老祖等人为了培育与控制血玉蜘蛛耗费巨大心血，而韩立也因此卷入虚天殿核心争夺。血玉蜘蛛不仅肉身坚硬、毒性可怕，还能够在关键时刻吞噬禁制与破除封印，因此在虚天殿夺宝过程中发挥了极其关键的作用。它的出现，也让《凡人修仙传》首次真正展现出"天地灵虫"这一特殊体系的重要性，为后来噬金虫等更高级灵虫的登场埋下伏笔。',
+    abilities:['血玉蛛丝','吞噬禁制','破除封印','剧毒'], acquisition:'乱星海所得', firstAppearChapter:'虚天殿篇', notableUsage:'虚天殿夺宝的关键灵虫' },
   { id:'a-mojiao', name:'墨蛟', type:'灵兽/灵虫', grade:'法宝', ownerId:H, ownerName:'韩立', description:'黑色蛟龙灵兽，拥有真龙血脉。', abilities:['龙族血脉'], acquisition:'乱星海收服', firstAppearChapter:'乱星海篇', notableUsage:'' },
   { id:'a-jinbei-yaolang', name:'金背妖螂', type:'灵兽/灵虫', grade:'灵器', ownerId:H, ownerName:'韩立', description:'金色背甲的螳螂状灵虫，擅隐匿偷袭。', abilities:['隐匿','偷袭'], acquisition:'越国灵山中驯养', firstAppearChapter:'人界篇早期', notableUsage:'' },
   { id:'a-xuechi-heiwen', name:'血翅黑蚊', type:'灵兽/灵虫', grade:'法宝', ownerId:H, ownerName:'韩立', description:'血翅黑蚊群，数量极多可遮天蔽日吸食精血。', abilities:['群攻','吸血'], acquisition:'收服', firstAppearChapter:'乱星海篇', notableUsage:'' },
