@@ -18,7 +18,7 @@ export default function CharacterDetailPage() {
     );
   }
 
-  const { name, aliases, affiliation, description, personality, techniques, relations, firstAppearChapter, status, ending } = character;
+  const { name, imageUrl, aliases, affiliation, description, personality, techniques, relations, firstAppearChapter, status, ending } = character;
 
   const statusLabel: Record<string, string> = { alive:'在世', departed:'已离去', deceased:'已陨落' };
   const statusClass: Record<string, string> = { alive:'statusAlive', departed:'statusDeparted', deceased:'statusDeceased' };
@@ -28,6 +28,13 @@ export default function CharacterDetailPage() {
       <Link to={ROUTES.CHARACTERS} className={styles.back}>← 返回人物志</Link>
       <ScrollReveal>
         <div className={styles.profile}>
+          <div className={styles.portrait}>
+            {imageUrl ? (
+              <img src={imageUrl} alt={name} className={styles.portraitImage} />
+            ) : (
+              <div className={styles.portraitEmpty}>待添加</div>
+            )}
+          </div>
           <div className={styles.main}>
             <div className={styles.head}>
               <div>

@@ -12,37 +12,6 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-.imageWrapper {
-  position: relative;
-  aspect-ratio: 3/4;
-  background: linear-gradient(135deg, var(--parchment-dark) 0%, var(--parchment) 100%);
-  overflow: hidden;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: multiply;
-  filter: grayscale(0.3) contrast(0.9);
-}
-
-.placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--parchment-dark) 0%, var(--parchment) 100%);
-}
-
-.initials {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  color: var(--ink-faint);
-  opacity: 0.3;
-}
-
 .info {
   padding: 1.25rem;
 }
