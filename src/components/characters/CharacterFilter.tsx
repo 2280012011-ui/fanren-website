@@ -1,7 +1,7 @@
 import { cn } from '../../utils/cn';
 import styles from './CharacterFilter.module.css';
 
-const TAGS = ['全部', '主角阵营', '早期人脉', '七玄门', '越国七派', '魔道六宗', '乱星海', '落云宗', '大晋', '天澜草原'];
+const TAGS = ['全部', '主角阵营', '早期人脉', '七玄门', '越国七派', '魔道六宗', '乱星海', '落云宗', '大晋', '天澜草原', '慕兰草原'];
 
 interface Props {
   selected: string;

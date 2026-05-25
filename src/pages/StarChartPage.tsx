@@ -152,6 +152,7 @@ function getPlanet(c: Character): PlanetConfig {
   if (c.tags.includes('大晋')) return { type:'rocky', base:'#887766', accent:'#aa9977', size:0.85, orbitRadius:0 };
   if (c.tags.includes('天澜草原')) return { type:'earthlike', base:'#aa9977', accent:'#ccbb99', size:0.8, orbitRadius:0 };
   if (c.tags.includes('主角阵营')) return { type:'earthlike', base:'#aa8866', accent:'#ccaa88', size:0.95, orbitRadius:0 };
+  if (c.tags.includes('慕兰草原')) return { type:'earthlike', base:'#bbaa88', accent:'#ddccaa', size:0.85, orbitRadius:0 };
   return { type:'rocky', base:'#889999', accent:'#aabbbb', size:0.75, orbitRadius:0 };
 }
 
@@ -231,6 +232,7 @@ function Scene({ onSelect }: { onSelect:(c:Character)=>void }) {
     '乱星海':        { radius: 18.5, yBase: -0.5, spread: 2.5 },
     '大晋':          { radius: 22,  yBase: 1, spread: 3 },
     '天澜草原':      { radius: 25,  yBase: -0.8, spread: 1.5 },
+    '慕兰草原':      { radius: 27,  yBase: 0.5, spread: 1.2 },
   };
 
   // Group characters by tag

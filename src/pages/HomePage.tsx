@@ -104,6 +104,10 @@ export default function HomePage() {
               <p>增加了BGM播放按钮；</p>
               <p>现已支持国内访问：https://fanren-website.pages.dev/；</p>
             </div>
+            <div className={styles.changelogContent} style={{marginTop:'1rem'}}>
+              <p>5.25</p>
+              <p>增加了部分人物与法宝；</p>
+            </div>
           </motion.div>
         </motion.div>,
         document.body
