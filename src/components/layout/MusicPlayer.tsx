@@ -8,7 +8,7 @@ export default function MusicPlayer() {
   useEffect(() => {
     const audio = new Audio('/bgm.mp3');
     audio.loop = true;
-    audio.volume = 0.3;
+    audio.volume = 0.6;
     audioRef.current = audio;
 
     // Try autoplay
