@@ -35,8 +35,8 @@ export default function MusicPlayer() {
       title={playing ? '暂停音乐' : '播放音乐'}
     >
       <svg viewBox="0 0 32 32" className={styles.icon}>
-        <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <text x="16" y="20" textAnchor="middle" fill="currentColor" fontSize="14">♪</text>
+        <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" strokeWidth="2" />
+        <text x="16" y="21" textAnchor="middle" fill="currentColor" fontSize="18" fontWeight="bold">♪</text>
       </svg>
     </button>
   );
