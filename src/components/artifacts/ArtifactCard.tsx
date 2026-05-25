@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function ArtifactCard({ artifact, onClick }: Props) {
-  const { name, type, grade, description, abilities, acquisition } = artifact;
+  const { name, grade, description, abilities, acquisition } = artifact;
 
   return (
     <div className={styles.card} onClick={onClick}>
@@ -16,7 +16,6 @@ export default function ArtifactCard({ artifact, onClick }: Props) {
           <h3 className={styles.name}>{name}</h3>
           <span className={styles.grade}>{grade}</span>
         </div>
-        <span className={styles.type}>{type}</span>
         <p className={styles.desc}>{description.slice(0, 40)}{description.length > 40 ? '…' : ''}</p>
         <div className={styles.abilities}>
           {abilities.map((a) => (

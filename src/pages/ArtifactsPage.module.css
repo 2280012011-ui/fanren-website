@@ -29,8 +29,8 @@
 }
 
 .filterPill {
-  padding: 0.35rem 0.9rem;
-  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
   font-family: var(--font-display);
   letter-spacing: 0.06em;
   color: var(--ink-light);

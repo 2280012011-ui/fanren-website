@@ -9,7 +9,7 @@ export const ROUTES = {
 export const NAV_ITEMS = [
   { label: '首页', path: ROUTES.HOME },
   { label: '时间线', path: ROUTES.TIMELINE },
-  { label: '法宝', path: ROUTES.ARTIFACTS },
+  { label: '物品', path: ROUTES.ARTIFACTS },
   { label: '人物', path: ROUTES.CHARACTERS },
   { label: '天机阁', path: ROUTES.TIANJI },
 ] as const;
