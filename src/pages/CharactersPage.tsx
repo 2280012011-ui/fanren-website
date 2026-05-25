@@ -30,7 +30,7 @@ export default function CharactersPage() {
   }, []);
 
   const video = createPortal(
-    <video className={styles.videoBg} src="/videos/characters-bg.mp4" autoPlay loop muted playsInline />,
+    <video className={styles.videoBg} src="/videos/法宝页面背景视频.mp4" autoPlay loop muted playsInline />,
     document.body
   );
 

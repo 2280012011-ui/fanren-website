@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import SectionTitle from '../components/common/SectionTitle';
 import ArtifactCard from '../components/artifacts/ArtifactCard';
@@ -23,10 +23,31 @@ export default function ArtifactsPage() {
     return artifacts.filter((a) => a.type === type);
   }, [type]);
 
+  useEffect(() => {
+    const root = document.getElementById('root');
+    const prevBg = document.body.style.background;
+    const prevPos = root?.style.position || '';
+    const prevZ = root?.style.zIndex || '';
+    document.body.style.background = 'transparent';
+    if (root) { root.style.position = 'relative'; root.style.zIndex = '1'; }
+    return () => {
+      document.body.style.background = prevBg;
+      if (root) { root.style.position = prevPos; root.style.zIndex = prevZ; }
+    };
+  }, []);
+
+  const video = createPortal(
+    <video className={styles.videoBg} src="/videos/characters-bg.mp4" autoPlay loop muted playsInline />,
+    document.body
+  );
+
   return (
     <div className={styles.page}>
+      {video}
       <ScrollReveal>
-        <SectionTitle title="法宝图鉴" subtitle="人界篇出现过的部分法宝一览 · 点击卡片查看详情" />
+        <div className={styles.titleWrap}>
+          <SectionTitle title="法宝图鉴" subtitle="人界篇出现过的部分法宝一览 · 点击卡片查看详情" />
+        </div>
       </ScrollReveal>
 
       {/* Horizontal filter */}
