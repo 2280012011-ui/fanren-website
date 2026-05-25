@@ -118,9 +118,7 @@ export default function CommentWall() {
           </div>
           <button className={styles.sendBtn} onClick={submit} disabled={loading}>{loading ? '发送中…' : '发送传音符'}</button>
         </div>
-        <div className={styles.rateHint}>
-          <span className={styles.rateIcon} title="每人每分钟最多 3 条评论、10 次点赞">ⓘ</span>
-        </div>
+        <p className={styles.rateNote}>每分钟最多 3 条评论、10 次点赞</p>
 
         <div className={styles.list}>
           {comments.map(c => (

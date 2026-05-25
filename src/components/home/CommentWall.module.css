@@ -64,16 +64,13 @@
 .sendBtn:hover { background:var(--vermillion-dark); }
 .sendBtn:disabled { opacity:0.5; cursor:not-allowed; }
 
-.rateHint { display: flex; justify-content: flex-end; margin-bottom: 0.5rem; }
-.rateIcon {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 1px solid var(--ink-faint);
-  font-size: 0.65rem; color: var(--ink-faint);
-  font-family: var(--font-body); cursor: help;
-  transition: all 0.2s ease;
+.rateNote {
+  text-align: right;
+  font-size: 0.7rem;
+  color: var(--ink-faint);
+  font-family: var(--font-body);
+  margin-bottom: 0.75rem;
 }
-.rateIcon:hover { border-color: var(--vermillion); color: var(--vermillion); }
 
 /* Comment list */
 .list { display:flex; flex-direction:column; gap:0.75rem; }
