@@ -18,10 +18,7 @@ export default function CharacterDetailPage() {
     );
   }
 
-  const { name, imageUrl, aliases, affiliation, description, personality, techniques, relations, firstAppearChapter, status, ending } = character;
-
-  const statusLabel: Record<string, string> = { alive:'在世', departed:'已离去', deceased:'已陨落' };
-  const statusClass: Record<string, string> = { alive:'statusAlive', departed:'statusDeparted', deceased:'statusDeceased' };
+  const { name, imageUrl, aliases, affiliation, description, personality, techniques, relations, firstAppearChapter, ending } = character;
 
   return (
     <div className={styles.page}>
@@ -41,7 +38,6 @@ export default function CharacterDetailPage() {
                 <h1 className={styles.name}>{name}</h1>
                 {aliases.length > 0 && <p className={styles.aliases}>亦称：{aliases.join('、')}</p>}
               </div>
-              <span className={`${styles.status} ${styles[statusClass[status]] || ''}`}>{statusLabel[status]}</span>
             </div>
 
             <div className={styles.meta}>
