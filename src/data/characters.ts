@@ -50,8 +50,9 @@ export const characters: Character[] = [
 
   // ═══ 黄枫谷与越国七派 ═══
   { id:'li-huayuan', name:'李化元', aliases:[], imageUrl:'/images/characters/li-huayuan.webp', realm:'结丹期', affiliation:'黄枫谷',
-    description:'黄枫谷结丹中期长老，身具三阳之体，韩立的第二位师父。为人小气市侩但也重情守诺、忠心耿耿。在韩立血色试炼后收其为记名弟子，后在韩立筑基后正式收为亲传弟子。对韩立有实质性庇护——赐予法器、让韩立自选功法（韩立因此获得改变命运的《青元剑诀》）。魔道入侵后随黄枫谷迁往九国盟，最终在九国盟与慕兰法士的惨烈大战中战死。韩立220岁成为元婴修士后才从雷万鹤口中得知师父已死一百多年，面露黯然。', personality:'小气市侩但重情守诺、忠心护短', techniques:['真阳诀','顶阶火属性功法'],
-    relations:[{targetId:'han-li',targetName:'韩立',relation:'师父'}], firstAppearChapter:'黄枫谷篇', status:'deceased', tags:['越国七派'], ending:'魔道入侵后生死不明，后确认陨落。' },
+    description:'在《凡人修仙传》动漫中，李化元被塑造为一位有血有肉、极其护短且重情重义的师长。他因赌局赢下血线蛟内丹而收韩立为徒，日常虽看似好面子、爱与人斗嘴，实则对韩立等门下弟子视如己出。在魔道六宗大举入侵、黄枫谷高层决定将包括韩立在内的大批弟子当作诱饵弃子的绝境下，他没有选择盲从或苟且偷生。他将身上所有的灵石与丹药托付给韩立交代后事，随后为了掩护门下弟子逃生，并试图解救被困的红拂师姐，他以结丹中期的修为，毅然决然地向元婴中期的云露老魔拔剑相向，展现出了极具感染力的悲壮气节，是韩立修仙道上真正意义上的恩师。',
+    personality:'极其护短、重情重义、舍生取义', techniques:['真阳诀','碎丹一击'],
+    relations:[{targetId:'han-li',targetName:'韩立',relation:'恩师'}], firstAppearChapter:'黄枫谷篇', status:'deceased', tags:['越国七派'], ending:'为掩护韩立等弟子撤退，碎裂金丹力战云露老魔，壮烈战死。' },
   { id:'hong-fu', name:'红拂', aliases:[], imageUrl:'/images/characters/hong-fu.webp', realm:'结丹期', affiliation:'黄枫谷',
     description:'黄枫谷结丹后期长老，红衣胜火风姿绰约，是黄枫谷除令狐老祖外的第二战力。精通符箓、阵法与遁法，法体双修可越阶战斗。作为董萱儿生母，早年与合欢宗云露老魔有一段情缘，诞下女儿后因正邪殊途决然脱身。李化元一直暗恋这位师姐。魔道大战后黄枫谷陷落，李化元为救她自碎金丹力战云露老魔而死。红拂亲眼目睹师弟赴死，那句化元我们回家成经典名场面。后离开黄枫谷成为散修，因情殇与愧疚缠缚道心，终生止步结丹期未能突破元婴。', personality:'外冷内热、坚韧护短、重情重义', techniques:['符箓之术','阵法','风云幡遁法'],
     relations:[{targetId:'han-li',targetName:'韩立',relation:'宗门前辈'}], firstAppearChapter:'黄枫谷篇', status:'alive', tags:['越国七派'], ending:'后期继续存活于天南。' },

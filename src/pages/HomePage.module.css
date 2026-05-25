@@ -136,5 +136,6 @@
   font-size: 0.95rem;
   color: var(--ink-medium);
   line-height: 2;
+  white-space: pre-line;
   text-indent: 2em;
 }

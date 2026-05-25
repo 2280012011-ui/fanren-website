@@ -74,15 +74,7 @@ export default function HomePage() {
           <motion.div className={styles.aboutCard} initial={{opacity:0,scale:0.9,y:20}} animate={{opacity:1,scale:1,y:0}} exit={{opacity:0,scale:0.9,y:20}} onClick={e=>e.stopPropagation()}>
             <button className={styles.aboutClose} onClick={() => setShowAbout(false)}>×</button>
             <p className={styles.aboutText}>
-              作者说：
-祝贺《凡人修仙传》开播大吉！
-
-诸位道友别来无恙？
-本网站全程通过 vibe coding 开发，所以有些地方很粗糙，还有许多 bug，但是为爱发电，仅供娱乐。
-背景视频取自社交媒体平台，已获得原作者授权。感谢博主 @落雨无声、@天南第一深情。
-想要同款视频壁纸的道友，可以在b站或者小红车搜以上两位创作者。
-
-感谢诸位道友支持！
+              作者说：<br/><br/>祝《凡人修仙传》开播大吉！ 诸位道友别来无恙？<br/><br/>由于动漫与原著小说在故事情节上有出入，故本网站的信息以已播出的动漫剧情为准，动漫尚未出现的人物则以原著小说为准。<br/><br/>本网站全程通过 vibe coding 开发，所以有些地方很粗糙，还有许多 bug，但是为爱发电，仅供娱乐。<br/>背景视频取自社交媒体平台，已获得原作者授权。感谢博主 @落雨无声、@天南第一深情。 想要同款视频壁纸的道友，可以在b站或者小红车搜以上两位创作者。<br/><br/>感谢诸位道友支持！
             </p>
           </motion.div>
         </motion.div>,
