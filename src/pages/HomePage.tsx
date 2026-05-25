@@ -101,6 +101,13 @@ export default function HomePage() {
               <p>增加了部分人物与法宝；</p>
               <p>更正部分人物信息；</p>
             </div>
+            <div className={styles.changelogContent} style={{marginTop:'1rem'}}>
+              <p>5.26</p>
+              <p>根据各位道友在B站视频或网站下的建议，对部分有误的信息进行了修改并新增十余位人物；</p>
+              <p>作者已燃尽，怒烧8亿Token，马上要开组会了论文还没看......</p>
+              <p>此网站大体应该就这样了，后续可能会陆续加入地图功能并进行一些内容与排版上的修正。</p>
+              <p>再次感谢诸位道友的支持，那么就请静候凡人开播！</p>
+            </div>
           </motion.div>
         </motion.div>,
         document.body

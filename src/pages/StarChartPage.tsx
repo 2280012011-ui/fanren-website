@@ -143,16 +143,14 @@ function getPlanet(c: Character): PlanetConfig {
   if (c.id === 'mo-daifu') return { type:'lava', base:'#3a2010', accent:'#5a3020', size:0.7, orbitRadius:0 };
   if (c.id === 'wang-chan') return { type:'lava', base:'#3a1010', accent:'#6a2020', size:1.0, orbitRadius:0 };
   // Tag-based mappings (lower priority)
-  if (c.tags.includes('魔道六宗')) return { type:'lava', base:'#3a1010', accent:'#6a2020', size:0.9, orbitRadius:0 };
-  if (c.tags.includes('七玄门')) return { type:'moon', base:'#889988', accent:'#aabbaa', size:0.6, orbitRadius:0 };
-  if (c.tags.includes('越国七派')) return { type:'earthlike', base:'#889966', accent:'#aabb77', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('乱星海')) return { type:'gas', base:'#556688', accent:'#7788aa', size:0.9, orbitRadius:0 };
-  if (c.tags.includes('早期人脉')) return { type:'moon', base:'#aaccaa', accent:'#ccddcc', size:0.75, orbitRadius:0 };
-  if (c.tags.includes('落云宗')) return { type:'earthlike', base:'#668866', accent:'#88aa88', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('大晋')) return { type:'rocky', base:'#887766', accent:'#aa9977', size:0.85, orbitRadius:0 };
-  if (c.tags.includes('天澜草原')) return { type:'earthlike', base:'#aa9977', accent:'#ccbb99', size:0.8, orbitRadius:0 };
-  if (c.tags.includes('主角阵营')) return { type:'earthlike', base:'#aa8866', accent:'#ccaa88', size:0.95, orbitRadius:0 };
-  if (c.tags.includes('慕兰草原')) return { type:'earthlike', base:'#bbaa88', accent:'#ddccaa', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('风起天南')) return { type:'earthlike', base:'#889966', accent:'#aabb77', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('燕家堡之战')) return { type:'lava', base:'#5a2020', accent:'#8a3030', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('魔道争锋')) return { type:'ice', base:'#6677aa', accent:'#8899cc', size:0.9, orbitRadius:0 };
+  if (c.tags.includes('再别天南')) return { type:'moon', base:'#9999aa', accent:'#bbbbcc', size:0.8, orbitRadius:0 };
+  if (c.tags.includes('星海飞驰')) return { type:'gas', base:'#556688', accent:'#7788aa', size:0.9, orbitRadius:0 };
+  if (c.tags.includes('外海风云')) return { type:'ice', base:'#7799aa', accent:'#99bbcc', size:0.8, orbitRadius:0 };
+  if (c.tags.includes('重返天南')) return { type:'earthlike', base:'#668866', accent:'#88aa88', size:0.85, orbitRadius:0 };
+  if (c.tags.includes('后续篇章')) return { type:'rocky', base:'#887766', accent:'#aa9977', size:0.85, orbitRadius:0 };
   return { type:'rocky', base:'#889999', accent:'#aabbbb', size:0.75, orbitRadius:0 };
 }
 
@@ -224,15 +222,14 @@ function Scene({ onSelect }: { onSelect:(c:Character)=>void }) {
 
   // Assign orbital rings by tag
   const ringMap: Record<string, { radius: number; yBase: number; spread: number }> = {
-    '主角阵营':      { radius: 5.5, yBase: 0.5, spread: 1.2 },
-    '早期人脉':      { radius: 8,   yBase: -0.3, spread: 1.5 },
-    '越国七派':      { radius: 10.5, yBase: 0.8, spread: 1.8 },
-    '魔道六宗':      { radius: 13,  yBase: -1, spread: 2 },
-    '落云宗':        { radius: 15.5, yBase: 0.5, spread: 2.2 },
-    '乱星海':        { radius: 18.5, yBase: -0.5, spread: 2.5 },
-    '大晋':          { radius: 22,  yBase: 1, spread: 3 },
-    '天澜草原':      { radius: 25,  yBase: -0.8, spread: 1.5 },
-    '慕兰草原':      { radius: 27,  yBase: 0.5, spread: 1.2 },
+    '风起天南':      { radius: 5.5, yBase: 0.5, spread: 1.8 },
+    '燕家堡之战':    { radius: 8.5,   yBase: -0.5, spread: 1.2 },
+    '魔道争锋':      { radius: 11.5, yBase: 0.8, spread: 2 },
+    '再别天南':      { radius: 14,  yBase: -0.3, spread: 1 },
+    '星海飞驰':      { radius: 17, yBase: 0.5, spread: 3 },
+    '外海风云':      { radius: 20, yBase: -0.8, spread: 1.5 },
+    '重返天南':      { radius: 23, yBase: 1, spread: 2.2 },
+    '后续篇章':      { radius: 27, yBase: -0.5, spread: 4 },
   };
 
   // Group characters by tag

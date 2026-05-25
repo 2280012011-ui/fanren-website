@@ -24,7 +24,7 @@
 
 .section { margin-bottom: 1.5rem; }
 .sectionTitle { font-size: 1.05rem; color: var(--vermillion); letter-spacing: 0.06em; margin-bottom: 0.5rem; font-family: var(--font-display); border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 0.3rem; }
-.text { font-size: 1rem; color: var(--ink-medium); line-height: 1.9; text-indent: 2em; }
+.text { font-size: 1rem; color: var(--ink-medium); line-height: 1.9; text-indent: 2em; white-space: pre-line; }
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 

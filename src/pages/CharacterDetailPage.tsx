@@ -1,18 +1,18 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { characters } from '../data/characters';
 import RelationMap from '../components/characters/RelationMap';
 import ScrollReveal from '../components/common/ScrollReveal';
-import { ROUTES } from '../utils/constants';
 import styles from './CharacterDetailPage.module.css';
 
 export default function CharacterDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const character = characters.find((c) => c.id === id);
 
   if (!character) {
     return (
       <div className={styles.page}>
-        <Link to={ROUTES.CHARACTERS} className={styles.back}>← 返回人物志</Link>
+        <button onClick={() => navigate(-1)} className={styles.back}>← 返回人物志</button>
         <div className={styles.notFound}><p>该人物资料暂未收录</p></div>
       </div>
     );
@@ -22,7 +22,7 @@ export default function CharacterDetailPage() {
 
   return (
     <div className={styles.page}>
-      <Link to={ROUTES.CHARACTERS} className={styles.back}>← 返回人物志</Link>
+      <button onClick={() => navigate(-1)} className={styles.back}>← 返回人物志</button>
       <ScrollReveal>
         <div className={styles.profile}>
           <div className={styles.portrait}>
