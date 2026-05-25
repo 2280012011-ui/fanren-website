@@ -107,6 +107,7 @@ export default function HomePage() {
             <div className={styles.changelogContent} style={{marginTop:'1rem'}}>
               <p>5.25</p>
               <p>增加了部分人物与法宝；</p>
+              <p>更正部分人物信息；</p>
             </div>
           </motion.div>
         </motion.div>,
