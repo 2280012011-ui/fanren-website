@@ -11,6 +11,29 @@ const auth = () => (process.env.UPSTASH_REDIS_REST_TOKEN || '');
 
 function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 
+// Extract client IP from request headers
+function getIP(req: Request): string {
+  const fwd = req.headers.get('x-forwarded-for') || '';
+  const real = req.headers.get('x-real-ip') || '';
+  return fwd.split(',')[0].trim() || real || 'unknown';
+}
+
+// Rate limit checker: returns true if limit exceeded
+async function rateLimit(ip: string, action: string, max: number, windowSec: number): Promise<{ ok: boolean; count: number }> {
+  const rk = `fanren:rl:${action}:${ip}`;
+  const h = { Authorization: `Bearer ${auth()}` };
+  // INCR
+  const incr = await fetch(redisUrl(`/incr/${rk}`), { method: 'POST', headers: h });
+  if (!incr.ok) return { ok: true, count: 0 }; // Redis down, allow
+  const data = await incr.json();
+  const count = data.result as number;
+  // Set expiry on first hit
+  if (count === 1) {
+    await fetch(redisUrl(`/expire/${rk}/${windowSec}`), { method: 'POST', headers: h }).catch(() => {});
+  }
+  return { ok: count <= max, count };
+}
+
 async function getComments(): Promise<Comment[]> {
   const res = await fetch(redisUrl(`/get/${KEY}`), {
     headers: { Authorization: `Bearer ${auth()}` },
@@ -50,6 +73,12 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
+    const ip = getIP(req);
+    const rl = await rateLimit(ip, 'comment', 3, 60);
+    if (!rl.ok) {
+      return Response.json({ error: `发送太快，每分钟限3条（已用${rl.count}次）` }, { status: 429 });
+    }
+
     const { text, name } = await req.json();
     const cleanText = (text || '').trim().slice(0, 100);
     if (!cleanText) return Response.json({ error: '评论不能为空' }, { status: 400 });
@@ -84,6 +113,12 @@ export async function DELETE(req: Request) {
 
 export async function PATCH(req: Request) {
   try {
+    const ip = getIP(req);
+    const rl = await rateLimit(ip, 'like', 15, 60);
+    if (!rl.ok) {
+      return Response.json({ error: `操作太快，每分钟限15次点赞` }, { status: 429 });
+    }
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');
     const action = searchParams.get('action') || 'like';
