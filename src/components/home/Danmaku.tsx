@@ -11,7 +11,7 @@ const ROTATE_INTERVAL = 8000;
 export default function Danmaku({ enabled }: { enabled: boolean }) {
   const [pool, setPool] = useState<Comment[]>([]);
   const [startIdx, setStartIdx] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval>>();
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (!enabled) return;
@@ -41,7 +41,7 @@ export default function Danmaku({ enabled }: { enabled: boolean }) {
     timerRef.current = setInterval(() => {
       setStartIdx(prev => (prev + VISIBLE_COUNT) % pool.length);
     }, ROTATE_INTERVAL);
-    return () => clearInterval(timerRef.current);
+    return () => { if (timerRef.current !== null) clearInterval(timerRef.current); };
   }, [enabled, pool.length]);
 
   const visible = useMemo(() => {
