@@ -54,7 +54,7 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       {video}
-      <Danmaku enabled={danmakuOn} />
+      {danmakuOn && createPortal(<Danmaku enabled={true} />, document.body)}
       <div className={styles.content}>
         <HeroSection />
         <RebroadcastBanner />
