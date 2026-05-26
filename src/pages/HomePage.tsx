@@ -7,14 +7,12 @@ import HonorsPanel from '../components/home/HonorsPanel';
 import StatisticsPanel from '../components/home/StatisticsPanel';
 import PromotionalSection from '../components/home/PromotionalSection';
 import CommentWall from '../components/home/CommentWall';
-import Danmaku from '../components/home/Danmaku';
 import InkBrush from '../components/common/InkBrush';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
   const [showAbout, setShowAbout] = useState(false);
   const [showChangelog, setShowChangelog] = useState(false);
-  const [danmakuOn, setDanmakuOn] = useState(false);
 
   // Make body transparent and lift root above portal video
   useEffect(() => {
@@ -54,7 +52,6 @@ export default function HomePage() {
   return (
     <div className={styles.page}>
       {video}
-      <Danmaku enabled={danmakuOn} />
       <div className={styles.content}>
         <HeroSection />
         <RebroadcastBanner />
@@ -70,7 +67,6 @@ export default function HomePage() {
       {/* Bottom-right buttons */}
       <button className={styles.aboutBtn} onClick={() => setShowAbout(true)}>？</button>
       <button className={styles.changelogBtn} onClick={() => setShowChangelog(true)}>更新日志</button>
-      <button className={styles.danmakuBtn} onClick={() => setDanmakuOn(!danmakuOn)}>{danmakuOn ? '关闭弹幕' : '弹幕'}</button>
 
       {/* About popup */}
       {showAbout && createPortal(
