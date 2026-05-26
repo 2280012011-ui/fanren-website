@@ -13,13 +13,11 @@ export default function Danmaku({ enabled }: { enabled: boolean }) {
     let cancelled = false;
     (async () => {
       const all: Comment[] = [];
-      let page = 1;
-      while (true) {
+      for (let page = 1; page <= 6; page++) {
         const res = await fetch(`/api/comments?page=${page}&pageSize=50&sort=time`);
         const data = await res.json();
         all.push(...(data.comments || []));
         if (page >= (data.totalPages || 1)) break;
-        page++;
       }
       if (cancelled) return;
       setPool(all);
