@@ -16,16 +16,23 @@ export default function Danmaku({ enabled }: { enabled: boolean }) {
   useEffect(() => {
     if (!enabled) return;
     let cancelled = false;
+
     (async () => {
-      const all: Comment[] = [];
-      let page = 1;
-      while (true) {
+      // Fetch page 1 first, show immediately
+      const first = await fetch('/api/comments?page=1&pageSize=50&sort=time').then(r => r.json());
+      if (cancelled) return;
+      const totalPages: number = first.totalPages || 1;
+      let all: Comment[] = [...(first.comments || [])];
+      setPool([...all]);
+
+      // Fetch remaining pages in background
+      for (let page = 2; page <= totalPages; page++) {
         const res = await fetch(`/api/comments?page=${page}&pageSize=50&sort=time`);
         const data = await res.json();
-        all.push(...(data.comments || []));
-        if (page >= (data.totalPages || 1)) break;
-        page++;
+        if (cancelled) return;
+        all = all.concat(data.comments || []);
       }
+
       if (cancelled) return;
       for (let i = all.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -33,6 +40,7 @@ export default function Danmaku({ enabled }: { enabled: boolean }) {
       }
       setPool(all);
     })();
+
     return () => { cancelled = true; };
   }, [enabled]);
 
