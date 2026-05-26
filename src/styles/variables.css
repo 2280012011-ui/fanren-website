@@ -25,6 +25,6 @@
   --content-max: 1200px;
 
   /* Typography */
-  --font-display: 'Ma Shan Zheng', 'ZCOOL KuaiLe', 'Noto Serif SC', serif;
-  --font-body: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  --font-display: 'System Latin', 'Ma Shan Zheng', 'ZCOOL KuaiLe', 'Noto Serif SC', sans-serif;
+  --font-body: 'System Latin', 'Noto Serif SC', 'Source Han Serif SC', sans-serif;
 }
