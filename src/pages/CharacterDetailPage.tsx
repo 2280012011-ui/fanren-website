@@ -18,7 +18,7 @@ export default function CharacterDetailPage() {
     );
   }
 
-  const { name, imageUrl, aliases, affiliation, description, personality, techniques, relations, firstAppearChapter, ending } = character;
+  const { name, imageUrl, aliases, affiliation, description, techniques, relations } = character;
 
   return (
     <div className={styles.page}>
@@ -42,7 +42,6 @@ export default function CharacterDetailPage() {
 
             <div className={styles.meta}>
               <span className={styles.metaItem}><strong>所属势力</strong> {affiliation}</span>
-              <span className={styles.metaItem}><strong>初次登场</strong> {firstAppearChapter}</span>
             </div>
 
             <div className={styles.section}>
@@ -50,23 +49,12 @@ export default function CharacterDetailPage() {
               <p className={styles.text}>{description}</p>
             </div>
 
-            <div className={styles.row}>
+            {techniques.length > 0 && (
               <div className={styles.section}>
-                <h3 className={styles.sectionTitle}>性格</h3>
-                <p className={styles.text}>{personality}</p>
+                <h3 className={styles.sectionTitle}>功法能力</h3>
+                <div className={styles.tags}>{techniques.map(t=><span key={t} className={styles.tag}>{t}</span>)}</div>
               </div>
-              {techniques.length > 0 && (
-                <div className={styles.section}>
-                  <h3 className={styles.sectionTitle}>功法能力</h3>
-                  <div className={styles.tags}>{techniques.map(t=><span key={t} className={styles.tag}>{t}</span>)}</div>
-                </div>
-              )}
-            </div>
-
-            <div className={`${styles.section} ${styles.endingSection}`}>
-              <h3 className={styles.sectionTitle}>人物结局</h3>
-              <p className={styles.text}>{ending}</p>
-            </div>
+            )}
 
             <RelationMap relations={relations} />
           </div>

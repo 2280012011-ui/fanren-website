@@ -284,7 +284,7 @@ export default function StarChartPage() {
           <p className={styles.detailAff}>{selected.affiliation}</p>
           <div className={styles.detailDivider}/>
           <p className={styles.detailDesc}>{selected.description}</p>
-          <div className={styles.detailSection}><strong>结局</strong><p>{selected.ending}</p></div>
+          {selected.ending && <div className={styles.detailSection}><strong>结局</strong><p>{selected.ending}</p></div>}
           {selected.relations.length>0&&<div className={styles.detailSection}><strong>关系</strong>{selected.relations.map(r=><p key={r.targetId} className={styles.relItem}>{r.targetName} · {r.relation}</p>)}</div>}
         </div>
       )}

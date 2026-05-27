@@ -117,6 +117,11 @@ export default function HomePage() {
               <p>新增弹幕功能；</p>
               <p>由@掩耳盗灵优化了网页的移动端布局；</p>
             </div>
+            <div className={styles.changelogContent} style={{marginTop:'1rem'}}>
+              <p>5.28</p>
+              <p>更正了部分人物的信息；</p>
+              <p>为防止剧透，删除了"人物结局"等信息；</p>
+            </div>
           </motion.div>
         </motion.div>,
         document.body

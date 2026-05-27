@@ -21,14 +21,14 @@ export interface Character {
   name: string;
   aliases: string[];
   imageUrl?: string;
-  realm: CultivationRealm;
+  realm?: CultivationRealm;
   affiliation: string;
   description: string;
-  personality: string;
+  personality?: string;
   techniques: string[];
   relations: CharacterRelation[];
-  firstAppearChapter: string;
-  status: 'alive' | 'departed' | 'deceased';
+  firstAppearChapter?: string;
+  status?: 'alive' | 'departed' | 'deceased';
   tags: string[];
-  ending: string;
+  ending?: string;
 }
