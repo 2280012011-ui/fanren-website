@@ -1,0 +1,58 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--parchment);
+}
+
+.inkDrop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drop {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ink-full);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drop.expanded {
+  width: 200vmax;
+  height: 200vmax;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, var(--ink-full) 0%, var(--parchment) 60%);
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mainTitle {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--vermillion);
+  letter-spacing: 0.2em;
+}
+
+.subTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+  letter-spacing: 0.4em;
+}
