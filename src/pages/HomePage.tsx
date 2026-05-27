@@ -78,7 +78,7 @@ export default function HomePage() {
           <motion.div className={styles.aboutCard} initial={{opacity:0,scale:0.9,y:20}} animate={{opacity:1,scale:1,y:0}} exit={{opacity:0,scale:0.9,y:20}} onClick={e=>e.stopPropagation()}>
             <button className={styles.aboutClose} onClick={() => setShowAbout(false)}>×</button>
             <p className={styles.aboutText}>
-              作者说：<br/><br/>祝《凡人修仙传》开播大吉！ 诸位道友别来无恙？<br/><br/>由于动漫与原著小说在故事情节上有出入，故本网站的信息以已播出的动漫剧情为准，动漫尚未出现的人物则以原著小说为准。<br/><br/>本网站全程通过 vibe coding 开发，所以有些地方很粗糙，还有许多 bug，但是为爱发电，仅供娱乐。<br/>背景视频取自社交媒体平台，已获得原作者授权。感谢博主 @落雨无声、@天南第一深情。 想要同款视频壁纸的道友，可以在b站或者小红车搜以上两位创作者。<br/><br/>感谢诸位道友支持！
+              {'作者说：\n\n各位道友，别来无恙？\n\n“凡人修仙，风起天南。”因为共同的热爱，我们相聚于此。本网站为《凡人修仙传》纯粉丝自制图鉴百科，由数位同好利用业余时间“为爱发电”搭建而成，旨在为大家梳理原著与动漫中的庞大世界观（目前仍处于起步阶段，内容有很多谬误，正在完善中），所有内容仅供粉丝内部交流娱乐。\n\n光阴荏苒，不论是追更小说的岁月，还是如今追逐动漫的时光，凡人都承载了我们太多的青春。祝《凡人修仙传》动漫开播大吉，收视长虹！\n\n\n【特别鸣谢制作团队】\n移动端布局设计：@掩耳盗灵\n百科内容纠错与完善：（正在建设中......）\n网页背景视频授权：@落雨无声AI、@天南第一深情\n\n【免责声明】\n本站为纯粉丝向非营利性网站。站内涉及的《凡人修仙传》世界观、人物设定、专有名词及部分美术/视频素材，其版权均归原作者忘语及相关动漫/影视版权方所有。本站仅供同好交流与娱乐，严禁用于任何商业牟利用途。如有侵权，请B站私信@鄙人翔某删除。'}
             </p>
           </motion.div>
         </motion.div>,
@@ -111,6 +111,11 @@ export default function HomePage() {
               <p>作者已燃尽，怒烧8亿Token，马上要开组会了论文还没看......</p>
               <p>此网站大体应该就这样了，后续可能会陆续加入地图功能并进行一些内容与排版上的修正。</p>
               <p>再次感谢诸位道友的支持，那么就请静候凡人开播！</p>
+            </div>
+            <div className={styles.changelogContent} style={{marginTop:'1rem'}}>
+              <p>5.27</p>
+              <p>新增弹幕功能；</p>
+              <p>由@掩耳盗灵优化了网页的移动端布局；</p>
             </div>
           </motion.div>
         </motion.div>,
