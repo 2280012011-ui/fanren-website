@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ArtifactDetail({ artifact, onClose }: Props) {
-  const { name, type, grade, description, abilities, acquisition, firstAppearChapter, notableUsage } = artifact;
+  const { name, grade, description, abilities, acquisition, firstAppearChapter, notableUsage } = artifact;
 
   return (
     <motion.div
