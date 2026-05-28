@@ -30,7 +30,6 @@ export default function ArtifactDetail({ artifact, onClose }: Props) {
 
         <div className={styles.header}>
           <span className={styles.grade}>{grade}</span>
-          <span className={styles.type}>{type}</span>
         </div>
 
         <h2 className={styles.name}>{name}</h2>

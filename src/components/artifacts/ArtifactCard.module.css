@@ -65,16 +65,16 @@
 
 .ability {
   font-size: 0.85rem;
-  color: var(--gold);
+  color: var(--ink-heavy);
   padding: 0.15rem 0.5rem;
-  background: rgba(196, 168, 75, 0.08);
+  background: rgba(196, 168, 75, 0.15);
   font-family: var(--font-display);
   letter-spacing: 0.04em;
 }
 
 .acquisition {
   font-size: 0.85rem;
-  color: var(--ink-faint);
+  color: var(--ink-light);
   line-height: 1.5;
 }
 
