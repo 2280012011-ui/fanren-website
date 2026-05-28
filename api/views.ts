@@ -3,9 +3,6 @@ const RL_PREFIX = 'fanren:rl:view:';
 const RL_TTL = 600; // 10 minutes per IP
 
 export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const reset = url.searchParams.get('reset');
-
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
@@ -19,23 +16,6 @@ export async function GET(request: Request) {
       JSON.stringify({ views: 0, error: 'Redis 环境变量未配置' }),
       { status: 200, headers },
     );
-  }
-
-  // One-time reset (will be removed after this deployment)
-  if (reset === '8800-secret-reset') {
-    const pipeline = JSON.stringify([
-      ['DEL', KEY],
-      ['SET', KEY, '8800'],
-    ]);
-    const res = await fetch(`${redisUrl}/pipeline`, {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
-      body: pipeline,
-    });
-    const data = await res.json();
-    return new Response(JSON.stringify({ views: 8800, reset: true, redis: data }), {
-      status: 200, headers,
-    });
   }
 
   // Get client IP
