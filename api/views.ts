@@ -23,10 +23,14 @@ export async function GET(request: Request) {
 
   // One-time reset (will be removed after this deployment)
   if (reset === '8800-secret-reset') {
-    const res = await fetch(`${redisUrl}/set/${KEY}`, {
+    const pipeline = JSON.stringify([
+      ['DEL', KEY],
+      ['SET', KEY, '8800'],
+    ]);
+    const res = await fetch(`${redisUrl}/pipeline`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${redisToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ value: '8800' }),
+      body: pipeline,
     });
     const data = await res.json();
     return new Response(JSON.stringify({ views: 8800, reset: true, redis: data }), {
