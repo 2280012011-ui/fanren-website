@@ -46,7 +46,6 @@ export default function Header() {
           <span className={styles.navDot} />
         </NavLink>
       ))}
-      <MusicPlayer />
     </>
   );
 
@@ -59,6 +58,7 @@ export default function Header() {
             <span className={styles.logoSub}>人界篇</span>
           </NavLink>
           {showDesktopNav && <nav className={styles.nav}>{navContent}</nav>}
+          <MusicPlayer />
           <button
             className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
