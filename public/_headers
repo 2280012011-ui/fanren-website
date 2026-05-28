@@ -1,0 +1,15 @@
+# 视频文件 - 缓存 90 天
+/videos/*
+  Cache-Control: public, max-age=7776000, immutable
+
+# 图片文件 - 缓存 90 天
+/images/*
+  Cache-Control: public, max-age=7776000, immutable
+
+# 字体/图标 - 缓存 90 天
+/*.svg
+  Cache-Control: public, max-age=7776000, immutable
+
+# JS/CSS 构建产物（带哈希） - 缓存 90 天
+/assets/*
+  Cache-Control: public, max-age=7776000, immutable
