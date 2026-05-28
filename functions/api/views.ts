@@ -1,7 +1,13 @@
 export async function onRequest(context: { request: Request; env: Record<string, string> }) {
-  const res = await fetch('https://fanren-website.vercel.app/api/views', {
+  const url = new URL(context.request.url);
+  const targetUrl = 'https://fanren-website.vercel.app' + url.pathname + url.search;
+
+  const res = await fetch(targetUrl, {
     method: context.request.method,
-    headers: context.request.headers,
+    headers: {
+      'x-forwarded-for': context.request.headers.get('x-forwarded-for') || context.request.headers.get('cf-connecting-ip') || '',
+      'x-real-ip': context.request.headers.get('x-real-ip') || context.request.headers.get('cf-connecting-ip') || '',
+    },
   });
   const data = await res.json();
   return new Response(JSON.stringify(data), {
