@@ -7,6 +7,7 @@ export interface Artifact {
   name: string;
   imageUrl?: string;
   type: ArtifactType;
+  tag?: string;
   grade: ArtifactGrade;
   ownerId: string;
   ownerName: string;

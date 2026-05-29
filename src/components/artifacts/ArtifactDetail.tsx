@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ArtifactDetail({ artifact, onClose }: Props) {
-  const { name, grade, description, abilities, acquisition, firstAppearChapter, notableUsage } = artifact;
+  const { name, type, description, abilities, notableUsage } = artifact;
 
   return (
     <motion.div
@@ -28,10 +28,7 @@ export default function ArtifactDetail({ artifact, onClose }: Props) {
       >
         <button className={styles.close} onClick={onClose}>×</button>
 
-        <div className={styles.header}>
-          <span className={styles.grade}>{grade}</span>
-        </div>
-
+        <span className={styles.type}>{type}</span>
         <h2 className={styles.name}>{name}</h2>
 
         <div className={styles.divider} />
@@ -49,16 +46,6 @@ export default function ArtifactDetail({ artifact, onClose }: Props) {
             </div>
           </div>
         )}
-
-        <div className={styles.section}>
-          <h4 className={styles.label}>获取方式</h4>
-          <p className={styles.text}>{acquisition}</p>
-        </div>
-
-        <div className={styles.section}>
-          <h4 className={styles.label}>首次登场</h4>
-          <p className={styles.text}>{firstAppearChapter}</p>
-        </div>
 
         {notableUsage && (
           <div className={styles.section}>

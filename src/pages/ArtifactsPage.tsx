@@ -18,10 +18,10 @@ const MAIN_CATEGORIES = [
 ];
 
 const SUB_CATEGORIES: Record<string, string[]> = {
-  '法宝与法器类': ['玄天之宝/仙器', '通天灵宝', '仿制灵宝', '极品法宝/天地奇物', '古宝', '法宝', '法器', '辅助法器', '符宝'],
-  '功法与神通类': ['入门功法', '顶级功法', '炼体秘术', '神通/神雷', '异火', '剑阵神通'],
-  '修仙百艺类': ['上古阵法/禁制', '常规阵法', '高阶符箓', '常规符箓', '傀儡', '高阶丹药', '低阶丹药'],
-  '灵物与修仙资源类': ['奇虫/灵虫', '灵兽/奇兽', '妖兽', '妖兽/圣兽', '妖兽/鬼物', '天地灵木', '天地灵液/造化之物', '天地灵草/灵药', '天地灵物', '顶级炼器材料', '其他玉简/辅助物品'],
+  '法宝与法器类': ['法宝', '古宝', '法器', '符宝'],
+  '功法与神通类': ['功法', '秘术', '神通'],
+  '修仙百艺类': ['阵法', '符箓', '傀儡', '丹药'],
+  '灵物与修仙资源类': ['灵兽', '灵木', '灵草', '材料', '其他物品'],
 };
 
 export default function ArtifactsPage() {
@@ -31,10 +31,10 @@ export default function ArtifactsPage() {
 
   const filtered = useMemo(() => {
     if (mainCat === '全部') return artifacts;
-    if (subCat !== '全部') return artifacts.filter((a) => a.type === subCat);
+    if (subCat !== '全部') return artifacts.filter((a) => a.tag === subCat);
     // Main category selected, no subcategory — show all items under this category
-    const types = SUB_CATEGORIES[mainCat] || [];
-    return artifacts.filter((a) => types.includes(a.type));
+    const tags = SUB_CATEGORIES[mainCat] || [];
+    return artifacts.filter((a) => tags.includes(a.tag || ''));
   }, [mainCat, subCat]);
 
   // Reset sub-category when main category changes
