@@ -31,13 +31,13 @@ export async function GET(request: Request) {
     });
 
     if (rlRes.ok) {
-      const rlData = await rlRes.json();
+      const rlData = await rlRes.json() as { result: string | null };
       if (rlData.result) {
         // IP already counted — return current views without incrementing
         const getRes = await fetch(`${redisUrl}/get/${KEY}`, {
           headers: { Authorization: `Bearer ${redisToken}` },
         });
-        const getData = await getRes.json();
+        const getData = await getRes.json() as { result: string };
         const count = parseInt(getData.result, 10) || 0;
         return new Response(JSON.stringify({ views: count, throttled: true }), {
           status: 200, headers,
@@ -63,7 +63,7 @@ export async function GET(request: Request) {
       throw new Error(`Upstash 返回 ${incrRes.status}: ${text}`);
     }
 
-    const data = await incrRes.json();
+    const data = await incrRes.json() as { result: number };
     const count = data.result;
 
     return new Response(JSON.stringify({ views: count }), {

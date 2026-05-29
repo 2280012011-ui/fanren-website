@@ -25,8 +25,8 @@ async function rateLimit(ip: string, action: string, max: number, windowSec: num
   // INCR
   const incr = await fetch(redisUrl(`/incr/${rk}`), { method: 'POST', headers: h });
   if (!incr.ok) return { ok: true, count: 0 }; // Redis down, allow
-  const data = await incr.json();
-  const count = data.result as number;
+  const data = await incr.json() as { result: number };
+  const count = data.result;
   // Set expiry on first hit
   if (count === 1) {
     await fetch(redisUrl(`/expire/${rk}/${windowSec}`), { method: 'POST', headers: h }).catch(() => {});
@@ -39,7 +39,7 @@ async function getComments(): Promise<Comment[]> {
     headers: { Authorization: `Bearer ${auth()}` },
   });
   if (!res.ok) return [];
-  const data = await res.json();
+  const data = await res.json() as { result: string };
   const raw = data.result;
   return raw ? JSON.parse(raw as string) : [];
 }
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
       return Response.json({ error: `发送太快，每分钟限3条（已用${rl.count}次）` }, { status: 429 });
     }
 
-    const { text, name } = await req.json();
+    const { text, name } = await req.json() as { text?: string; name?: string };
     const cleanText = (text || '').trim().slice(0, 100);
     if (!cleanText) return Response.json({ error: '评论不能为空' }, { status: 400 });
     const cleanName = (name || '').trim().slice(0, 8) || '无名道友';
